@@ -1,0 +1,401 @@
+html h1   {
+  margin : 0px ;
+  padding :0px ;
+}
+
+ul li{
+  margin : 0px ;
+  padding :0px ;
+  list-style-type: none;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+#page-container{
+  margin: 0 15%;
+  min-width: 1350px;
+}
+/* main css */
+header #logo-wrapper {
+  float: left;
+  margin-left: 70px;
+}
+
+header #nav-user-menu {
+  padding-top: 75px ;
+  margin-right: 70px;
+  float: right;
+}
+
+header #header-nav-actions{
+  margin: 0;
+}
+
+#header-nav-actions > li {
+  display: inline-block;
+  margin-left:20px;
+}
+header #header-search {
+  text-align: center;
+  padding-top: 75px;
+}
+header #header-search #header-search-container{
+  border: none ;
+  border-bottom: 1px solid black;
+  width: 350px;
+}
+#header-menu {
+  border-bottom: solid black 1px;
+  position: relative;
+  background: rgb(244, 242, 242);
+  height: 50px;
+  margin: 0 5%;
+  margin-top: 20px;
+}
+#header-menu-cate{
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+
+}
+#header-menu-cate li{
+  display: inline-block;
+  font-weight:700;
+  font-size: 15px;
+  width: 260px;
+  height: 50px;
+  line-height: 50px;
+  /* background: red; */
+}
+
+#section-main {
+  margin: 0px 5%;
+}
+#section-main #slide {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height:500px;
+
+}
+
+#section-main #slide img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#main-notice {
+  text-align: center;
+  position: relative;
+  padding: 70px 68px;
+  margin-top: 70px ;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid black;
+  height: 550px ;
+  /* background: blue; */
+}
+
+.main-medium-text {
+  text-align: center;
+}
+
+.main-notice {
+  float: left ;
+  margin-left: 10px;
+  width: 330px ;
+  height: 480px;
+  border: 2px solid black;
+
+}
+.main-notice:last-child{
+  margin-right:  0 !important ;
+
+}
+
+.main-notice-image {
+  width: 100% ;
+  height: 85%;
+
+}
+
+.main-notice-text{
+  height: 13%;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+#main-recommend-wrap{
+  margin: 80px 0;
+  padding: 20px 78px;
+  position: relative;
+  height: 450px;
+  /* background: blue; */
+}
+#main-recommend-wrap h3{
+  margin-bottom: 40px;
+}
+
+#main-recommend-wrap h3 a{
+  color: rgb(214, 214, 214);
+}
+#main-recommend-wrap h3 a:first-child{
+  margin-right: 70px;
+  color: black ;
+  text-decoration: underline;
+
+}
+.main-recommend-list {
+  position : relative;
+  margin-bottom: 90px;
+  overflow: hidden;
+}
+
+.main-recommend {
+  width: 240px;
+  height: 290px;
+  border: 1px solid black;
+  float: left;
+  margin-right: 15px;
+}
+
+.main-recommend:last-child {
+  margin-right:  0px;
+}
+
+.main-recommend-image{
+  height: 250px;
+}
+.main-recommend-image img {
+  width: 240px;
+  height: 240px;
+}
+.main-recommend-text{
+  font-size: 12px;
+}
+
+.best-list {
+  display: none;
+}
+
+/* login css */
+#login-form {
+  margin: 145px 330px;
+  /* background: blue; */
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  width: 540px;
+  height: 230px;
+  padding: 50px 0px;
+
+}
+
+#login-top {
+
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 800;
+}
+#login-top span {
+  margin-left: 15px;
+}
+#login-content{
+  position: relative;
+
+}
+
+#login-content label {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center ;
+  display: inline-block;
+  width: 110px;
+}
+#login-content input{
+  width: 300px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#login-content input[type="button"]{
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  width: 85px;
+  height: 85px;
+  background: black;
+  color: white;
+  border:0;
+  outline: 0;
+}
+
+#login-error {
+  margin-top: 20px;
+  font-size: 15px;
+  width: 100%;
+  color: red ;
+  text-align: center ;
+  display: inline-block;
+  display: none ;
+}
+
+/*-------------------productList------------------ */
+
+#wrap-navi {
+  margin-top: 80px;
+  /* background: blue; */
+  width: 250px;
+  float: left;
+
+}
+#wrap-navi .sub-menu {
+  margin-top: 30px;
+}
+
+#wrap-navi .sub-menu ul {
+  margin: 0;
+  padding: 0 ;
+  font-size: 22px;
+}
+
+#wrap-navi .sub-menu ul li {
+  margin-bottom: 20px;
+}
+
+
+.sub-logo span {
+  font-size: 23px;
+  font-weight: 800;
+  color : rgba(98, 219, 66, 0.89);
+
+}
+
+#wrap-product {
+  margin-top: 80px;
+  /* background: green ; */
+  float: left;
+  max-width: 964px;
+  width: 100%;
+
+
+}
+
+#wrap-product h2 {
+  margin-left: 40px;
+}
+
+#product-list{
+  margin: 0 ;
+  padding: 0;
+
+}
+
+#product-list li {
+  width: 295px;
+  height: 300px;
+  /* background: blue; */
+  float: left;
+  margin-top: 20px;
+  margin-left : 20px;
+}
+#product-list img {
+  width: 295px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+#product-list span {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+#product-list p {
+  font-size: 12px;
+}
+
+/* --------product----------- */
+#product-head {
+  margin: 45px ;
+  width: 100%;
+  /* border-bottom: 1px solid black; */
+
+}
+
+#product-head-img {
+  width: 420px;
+  height: 500px;
+  /* background: blue; */
+  float: left;
+
+}
+
+#product-head-img img{
+  width: 420px;
+  height: 400px;
+}
+
+#product-head-info {
+  margin-left: 40px;
+  float: left;
+  width: 400px;
+  /* background: yellow; */
+}
+#product-head-info ul {
+  margin: 0 ;
+  padding: 0;
+}
+
+#product-head-info li:nth-child(1){
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+#product-head-info li:nth-child(2){
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+#product-head-info li:nth-child(3){
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 30px;
+
+}
+
+#product-head-info li:nth-child(5){
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.product-btn {
+    width: 190px;
+    height: 75px;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    float: left;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+
+}
+
+#product-cart {
+  background: rgb(109, 223, 99);
+  margin-right: 20px;
+}
+
+#product-buy {
+  background: rgb(241, 13, 65) ;
+}
+
+#product-head-info input[name="amount"]{
+    width: 30px;
+    height: 25px;
+}
