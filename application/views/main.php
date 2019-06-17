@@ -29,7 +29,7 @@
                 ?>
               </a>
             </li>
-            <li><a href="">Cart</a></li>
+            <li><a href="cart">Cart</a></li>
             <li><a href="">My page</a></li>
             <li>
             <?php

@@ -2,10 +2,16 @@
 
 class ProductController extends CI_Controller{
 
+  public function __construct(){
+    parent::__construct();
+    $this->load->database();
+    $this->load->model("ProductModel");
+  }
+
   public function index(){
       echo "mani " ;
-
-      $this->load->view("productList");
+      $data["list"] = $this->ProductModel->selectAllProduct();
+      $this->load->view("productList",$data);
 
   }
 
@@ -13,7 +19,7 @@ class ProductController extends CI_Controller{
       // echo "code :".code ;
       echo "product : ".$code;
 
-      $data["code"] = $code ;
+      $data["list"] = $this->ProductModel->selectProduct($code);
 
       $this->load->view("product",$data);
       // redirect(base_url("product"));

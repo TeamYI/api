@@ -11,18 +11,36 @@
     <div id="page-container">
       <header id="header">
         <h1 id="logo-wrapper">
-          <a href="" id="logo" title="main page 移動します。">
+          <a href="/shop/main" id="logo" title="main page 移動します。">
             <img src="./img/main-logo.png" alt="" width="210px" height="100px">
           </a>
         </h1>
         <div id="nav-user-menu">
           <ul id="header-nav-actions">
-            <li><a href="login">My Account</a></li>
-            <li><a href="cart">Cart</a></li>
+            <li>
+                <?php
+                  if(isset($_SESSION["user_id"])){
+                      echo $_SESSION["user_id"] ;
+                  }else { ?>
+                <a href="login">
+                <?php
+                    echo "My Account";
+                  }
+                ?>
+              </a>
+            </li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">My page</a></li>
+            <li>
+            <?php
+              if(isset($_SESSION["user_id"])){
+            ?><a href="logout">logout</a></li>
+          <?php } ?>
+
           </ul>
         </div>
         <div id="header-search">
-          <span id="search-label">search</span>
+          <span id="search-dt">search</span>
           <input type="text" id="header-search-container">
         </div>
         <div id="header-menu">
@@ -35,24 +53,8 @@
         </div>
       </header>
       <section id="section-main">
-        <div id="login-form">
-          <div id="login-top">
-            <span>LOGIN</span>
-          </div>
-          <div id="login-content">
-            <form class="" action="userlogin" method="post">
-              <label for="user_id">ID</label>
-              <input type="text" name="user_id">
-              <br>
-              <label for="user_pw">パスワード</label>
-              <input type="password" name="user_pw">
-              <br>
-              <input type="button" onclick="loginCheck(this)" value="LOGIN">
-            </form>
-            <div id="login-error">
-              <p>ID・PWが間違います。</p>
-            </div>
-          </div>
+        <div id="buy-finish-wrap">
+          <h1>購入完了しました。</h1>
         </div>
       </section>
       <footer id="footer">

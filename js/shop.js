@@ -14,7 +14,7 @@ $(document).ready(function(){
     console.log(curr_position);
 
     //main slide
-    setInterval(slideFade,5000) ;
+    // setInterval(slideFade,5000) ;
 
 
 
@@ -53,11 +53,16 @@ function loginCheck(position){
     }
   })
 }
+function Cart(){
+  
+  $("#BuyPageMove").attr("action", "/shop/cart");
+
+}
 
 //product BUY
-function buy(){
+function BuyPageMove(){
 
-  $("#BuyForm").attr("action", "/shop/buy");
+  $("#BuyPageMove").attr("action", "/shop/buyPageMove");
 
   // var code = $("#product-code").attr("data-code");
   // var price = $("#product-price").attr("data-price");
@@ -86,6 +91,13 @@ function buy(){
   //
   //   }
   // })
+}
+
+// product BUY
+function ProductBuy(){
+  // alert("ddd");
+  // console.log($("#ProductBuy"));
+  $("#ProductBuy").attr("action", "/shop/buy");
 }
 
 function slideFade(){

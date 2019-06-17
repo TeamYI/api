@@ -60,7 +60,9 @@ $route["logout"] = "LoginController/logout";
 $route["productList"] = "ProductController";
 $route["product/(:any)"] = "ProductController/product/$1";
 
+$route["buyPageMove"] = "BuyController/buyPageMove";
 $route["buy"] = "BuyController/buy";
 
+$route["cart"] = "CartController/cart";
 
 $route["main"] = "MainController" ;

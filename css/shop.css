@@ -399,3 +399,161 @@ header #header-search #header-search-container{
     width: 30px;
     height: 25px;
 }
+
+/* -------------------Buy --------------- */
+#buy-product-wrap {
+  margin-top: 55px;
+  border-top: 1px solid #1f1f1f;
+
+}
+#buy-product-wrap table {
+    margin-top: 43px;
+    text-align: center;
+    width: 100%;
+}
+#buy-product-wrap thead th {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(161, 162, 160);
+}
+
+#buy-head h2 {
+    margin-bottom: 30px;
+}
+
+#buy-product-wrap tbody tr td{
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#buy-product-wrap tbody td{
+    padding: 20px 0;
+}
+
+.buy-product-img {
+    width: 250px;
+}
+
+#buy-total-wrap {
+    display: table;
+    position: relative;
+    width: 100%;
+    margin: 40px 0 80px;
+    padding: 40px 0;
+    background-color: #fafafa;
+    border-top: 1px solid #e2e2e2;
+    font-size: 20px;
+
+}
+
+#buy-total-wrap .buy-pay {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.buy-pay img {
+    position: absolute;
+    top: 10%;
+    right: 0;
+}
+
+.buy-pay span:nth-child(2){
+    margin-left: 20px;
+}
+
+#buy-section {
+    width: 100%;
+    border-top: 1px solid #1f1f1f;
+    margin-bottom: 100px;
+}
+
+.buy-head-title {
+    font-weight: 800;
+    font-size: 15px;
+    margin: 21px 0;
+    padding: 10px;
+}
+
+#buy-info dl {
+    padding: 10px;
+    font-size: 20px;
+}
+
+#buy-info dt {
+    width: 200px;
+    float: left ;
+}
+
+#buy-info dd  {
+    margin-bottom: 50px;
+
+}
+
+#buy-info dd input {
+    border: none ;
+    border-bottom: 1px solid black;
+    width: 190px;
+    height: 30px;
+    font-size: 21px;
+}
+#buy-address {
+    width: 500px;
+    height: 150px;
+    margin-left: 160px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+#buy-address div:nth-child(2){
+    margin-top: 43px;
+}
+
+#buy-address div div {
+    width: 95px;
+    display: inline-block;
+
+}
+
+#buy-address #buy-addr1{
+    width: 250px;
+}
+
+#buy-address #buy-addr3 {
+    width: 250px;
+}
+
+#buy-section button {
+    width: 300px;
+    height: 60px;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgb(104, 226, 94);
+}
+
+#pay-select-wrap {
+    margin: 50px 0;
+    padding-bottom: 50px;
+    border-top: 1px solid black ;
+    border-bottom: 1px solid black;
+}
+#buy-info select {
+    width: 140px;
+    height: 36px;
+    font-size: 21px;
+}
+#pay-select-wrap dt {
+    float: left;
+}
+
+/*ーーーーーーーーーbuy-completeーーーーーーーーーーーー */
+
+#buy-finish-wrap h1 {
+    text-align: center;
+    line-height: 20;
+}

@@ -29,7 +29,7 @@
                 ?>
               </a>
             </li>
-            <li><a href="">Cart</a></li>
+            <li><a href="cart">Cart</a></li>
             <li><a href="">My page</a></li>
             <li>
             <?php
@@ -71,30 +71,31 @@
         <div id="wrap-product">
           <div id="product-head">
               <div id="product-head-img">
-                <img src="../img/a-1.png" alt="">
+                <img src="../img/<?php echo $list->product_img ?>" alt="">
               </div>
               <div id="product-head-info">
-                <form class="" action="" method="post"  id="BuyForm">
-                  <input type="hidden" name="product_code" value="<?php echo $code ?>">
-                  <input type="hidden" name="product_price" value="3500">
+                <form class="" action="" method="post"  id="BuyPageMove">
+                  <input type="hidden" name="product_code" value="<?php echo $list->product_code ?>">
+                  <input type="hidden" name="product_price" value="<?php echo $list->product_price ?>">
+                  <input type="hidden" name="product_name" value="<?php echo $list->product_name?>">
+                  <input type="hidden" name="product_img" value="<?php echo $list->product_img ?>">
                   <ul>
                     <li>カロンカロン</li>
-                    <li>딸기 마카롱</li>
+                    <li><?php echo $list->product_name?></li>
                     <li>
                       <span>가격 : </span>
-                      <span>3500</span>
+                      <span><?php echo $list->product_price ?></span>
                     </li>
                     <hr>
                     <li>
                       <span>수량 </span>
                       <input type="text"  name="amount" value="1">
                     </li>
-                    <button id="product-cart" class="product-btn" onclick="" name="">CART</button>
-                    <button id="product-buy" class="product-btn" onclick="buy()" name="">BUY</button>
+                    <button id="product-cart" class="product-btn" onclick="Cart()" name="">CART</button>
+                    <button id="product-buy" class="product-btn" onclick="BuyPageMove()" name="">BUY</button>
                   </ul>
                 </form>
               </div>
-
           </div>
         </div>
       </section>

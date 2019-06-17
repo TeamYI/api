@@ -29,7 +29,7 @@
                 ?>
               </a>
             </li>
-            <li><a href="">Cart</a></li>
+            <li><a href="cart">Cart</a></li>
             <li><a href="">My page</a></li>
             <li>
             <?php
@@ -72,45 +72,18 @@
           <h2>전체보기</h2>
           <hr>
           <ul id="product-list">
-            <a href="product/p1">
+            <?php
+              foreach ($list as $list) {
+            ?>
+            <a href="product/<?php echo $list->product_code; ?>">
               <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
+                  <img src="./img/<?php echo $list->product_img; ?>" alt="">
+                  <span><?php echo $list->product_name; ?></span>
                   <hr>
-                  <p>달콤한 딸기 마카롱! 우유필링으로 만든 꾸덕함을 느껴보세요.!!</p>
+                  <p><?php echo $list->product_detail; ?></p>
               </li>
             </a>
-            <a href="#">
-              <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
-              </li>
-            </a><a href="#">
-              <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
-              </li>
-            </a><a href="#">
-              <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
-              </li>
-            </a><a href="#">
-              <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
-              </li>
-            </a><a href="#">
-              <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
-              </li>
-            </a><a href="#">
-              <li>
-                  <img src="./img/a-1.png" alt="">
-                  <span>달콤한 마카롱</span>
-              </li>
-            </a>
+            <?php } ?>
           </ul>
         </div>
       </section>
