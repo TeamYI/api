@@ -52,6 +52,11 @@
             <div id="login-error">
               <p>ID・PWが間違います。</p>
             </div>
+            <a href="join" id="join-move">
+              <div>
+                <p>新規会員登録</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>

@@ -25,6 +25,23 @@ class UserModel extends CI_Model{
 
     }
 
+    function userCheck($user_id){
+        $query = $this->db->query("select * from user where user_id = '$user_id' ");
+
+        return $query->num_rows();
+
+    }
+
+    function userJoin($data){
+        $this->db->insert("user",$data);
+    }
+
+    function userInfo($user_id){
+        $query = $this->db->query("select * from user where user_id = '$user_id' ");
+
+        return $query->result();
+    }
+
 }
 
 ?>

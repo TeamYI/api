@@ -4,47 +4,91 @@ class BuyController extends CI_Controller{
   public function __construct(){
     parent::__construct();
     $this->load->database();
-    $this->load->model("NoUserModel");
+    $this->load->library("cart");
+    $this->load->model("BuyDetailModel");
     $this->load->model("BuyModel");
+    $this->load->model("CartModel");
+    $this->load->model("UserModel");
   }
 
   public function index(){
-      echo "a" ;
+
 
   }
 
   public function buyPageMove(){
-      $code = $_POST["product_code"] ;
-      $price = $_POST["product_price"] ;
-      $name = $_POST["product_name"] ;
-      $img = $_POST["product_img"] ;
-      $amount = $_POST["amount"] ;
 
-      $price = $price*$amount ;
-      $sum = $price*$amount ;
-      $delivery = 0 ;
+      $user_id = "" ;
+      $cartCodeArray = array();
+      $data["info"] = array();
+      $data["list"] = array();
 
-      if($sum < 2000){
-        $delivery = 250;
-        $sum = $delivery+$sum ;
+      if(isset($_SESSION["user_id"])){
+        $user_id = $_SESSION["user_id"];
+        $data["info"] = $this->UserModel->userInfo($user_id);
       }
 
-      $data = array(
-                  "code" => $code,
-                  "price" => $price,
-                  "amount" => $amount,
-                  "sum" => $sum,
-                  "delivery" => $delivery,
-                  "name" => $name,
-                  "img" => $img
-                );
+      if(isset($_POST['cartCode'])){
+        //cart行って購入
+        $cartCodeArray =  $_POST['cartCode'];
+
+        //$user_idがあった時、
+        for ($i=0; $i<count($cartCodeArray); $i++)
+        {
+            $cartCode = $cartCodeArray[$i];
+            $data["list"][$i] = $this->BuyModel->selectBuy($user_id,$cartCode);
+        }
+
+        //$user_idがない時、
+        for ($i=0; $i<count($cartCodeArray); $i++)
+        {
+
+          foreach ($this->cart->contents() as $items){
+              if($cartCodeArray[$i]==$items["rowid"]){
+                $data["list"][$i] = (object)array(
+                            "product_code" => $items["id"],
+                            "product_amount" => $items["qty"],
+                            "sum_price" => $items["sum_price"],
+                            "product_name" => $items["name"],
+                            "product_img" => $items["product_img"]
+                          );
+              }
+            }
+
+        }
+
+      }else{
+        //cart行かなくて購入
+        $code = $_POST["product_code"] ;
+        $price = $_POST["product_price"] ;
+        $name = $_POST["product_name"] ;
+        $img = $_POST["product_img"] ;
+        $amount = $_POST["amount"] ;
+
+        $sum = $price*$amount ;
+
+        $data["list"][0] = (object)array(
+                    "product_code" => $code,
+                    "product_amount" => $amount,
+                    "sum_price" => $sum,
+                    "product_name" => $name,
+                    "product_img" => $img
+                  );
+      }
+
 
       $this->load->view("buy",$data);
 
   }
 
+
   public function buy(){
       // echo "buy";
+      $user_id = "";
+      if(isset($_SESSION["user_id"])){
+        $user_id = $_SESSION["user_id"];
+      }
+
       $product_code = $_POST["product_code"] ;
       $sum_price = $_POST["sum_price"] ;
       $product_amount = $_POST["product_amount"] ;
@@ -59,6 +103,23 @@ class BuyController extends CI_Controller{
       $email = $_POST["email"] ;
       $pay = $_POST["pay"] ;
 
+
+      $buy_code	= date("YmdHis");
+
+      for($i=0; $i<count($product_code); $i++){
+          $p_code = $product_code[$i] ;
+          $p_amount = (integer)$product_amount[$i];
+
+          $data = array(
+                    "buy_code"=>$buy_code,
+                    "product_code"=>$p_code,
+                    "product_amount"=>$p_amount,
+                  );
+          $this->BuyModel->insertBuy($data);
+          $this->CartModel->deleteBuyProduct($user_id,$p_code);
+
+      }
+
       // echo "name : ".$name;
       // echo "post : ".$post;
       // echo "area : ".$area;
@@ -71,7 +132,8 @@ class BuyController extends CI_Controller{
       // echo "pay : ".$pay;
       //
       $data = array(
-                  "nouser_name" => $name,
+                  "buy_code"=>$buy_code,
+                  "user_name" => $name,
                   "postcode" => $post,
                   "area_code" => $area,
                   "city" => $city,
@@ -79,27 +141,22 @@ class BuyController extends CI_Controller{
                   "address2" => $addr2,
                   "address3" => $addr3,
                   "hp" => $tel,
-                  "email" => $email
+                  "email" => $email,
+                  "buy_price"=>$sum_price,
+                  "payment_code"=>$pay,
+                  "payment_check" => "X",
+                  "user_id" => $user_id
                 );
 
-      $this->NoUserModel->insertNoUser($data);
-      $nouser_code = $this->NoUserModel->selectLastNoUser();
+      $this->BuyDetailModel->insertBuyDetail($data);
+      //購入したら、カート内容消す
+      $this->cart->destroy();
+      redirect('/buyComplete');
 
-      $data = array(
-                "product_code"=>$product_code,
-                "product_amount"=>$product_amount,
-                "sum_price"=>$sum_price,
-                "payment_code"=>$pay,
-                "pay_confirm" => "X",
-                "nouser_code" => $nouser_code
-              );
+  }
 
-      // echo "nouser_code".$nouser_code;
-
-      $this->BuyModel->insertNoUserBuy($data);
-
+  public function buyComplete(){
       $this->load->view("buyComplete");
-
   }
 }
 

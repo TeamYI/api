@@ -240,8 +240,97 @@ header #header-search #header-search-container{
   color: red ;
   text-align: center ;
   display: inline-block;
-  display: none ;
+  visibility:hidden;
 }
+
+#join-move {
+  text-align: center;
+  text-decoration : underline;
+}
+
+/* ------------join---------------------------- */
+
+/* join css */
+#join-form {
+  margin: 145px auto;
+  /* background: blue; */
+  border-top: 3px solid black;
+
+  padding: 50px 0px;
+
+}
+
+#join-top {
+
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 800;
+}
+#join-top span {
+  margin-left: 15px;
+}
+#join-content div{
+  margin-bottom: 20px;
+
+}
+
+#join-content label {
+  font-size: 20px;
+  font-weight: 400;
+  display: inline-block;
+  width: 250px;
+}
+#join-content input{
+  width: 300px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#join-content input[type="submit"]{
+
+  width: 350px;
+  margin-top: 50px;
+  height: 65px;
+  font-size: 25px;
+  background: black;
+  color: white;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+#join-content button{
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 80px;
+  height: 28px;
+}
+
+#join-content div p{
+  margin-left: 260;
+  color: red ;
+}
+
+#join-address {
+    width: 380px;
+    height: 150px;
+    margin-left: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+#join-address div:nth-child(2){
+    margin-top: 43px;
+}
+
+#join-address div div {
+    width: 50px;
+    display: inline-block;
+
+}
+
+
 
 /*-------------------productList------------------ */
 
@@ -291,6 +380,11 @@ header #header-search #header-search-container{
 #product-list{
   margin: 0 ;
   padding: 0;
+
+}
+#product-list h2 {
+  text-align: center;
+  line-height: 400px;
 
 }
 
@@ -556,4 +650,25 @@ header #header-search #header-search-container{
 #buy-finish-wrap h1 {
     text-align: center;
     line-height: 20;
+}
+
+/*ーーーーーーーーーcartーーーーーーーーーーーー */
+#buy-head {
+    position: relative;
+}
+#cart-btn-wrap {
+    position: absolute;
+    right: 0;
+    margin-bottom:  50px;
+}
+.cart-btn {
+    width: 250px;
+    height: 60px;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    font-size: 17px;
+    background: rgb(133, 133, 133);
+    color: white;
+    cursor: pointer;
 }

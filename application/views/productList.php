@@ -30,7 +30,6 @@
               </a>
             </li>
             <li><a href="cart">Cart</a></li>
-            <li><a href="">My page</a></li>
             <li>
             <?php
               if(isset($_SESSION["user_id"])){
@@ -61,15 +60,15 @@
           </div>
           <div class="sub-menu">
             <ul>
-              <li><a href="">商品一覧</a></li>
-              <li><a href="">マカロン</a></li>
-              <li><a href="">マカロンセット</a></li>
-              <li><a href="">デザート</a></li>
+              <li><a href="javascript:CategoryList(0,'商品一覧');">商品一覧</a></li>
+              <li><a href="javascript:CategoryList(1,'マカロン');">マカロン</a></li>
+              <li><a href="javascript:CategoryList(2,'マカロンセット');">マカロンセット</a></li>
+              <li><a href="javascript:CategoryList(3,'デザート');">デザート</a></li>
             </ul>
           </div>
         </div>
         <div id="wrap-product">
-          <h2>전체보기</h2>
+          <h2>商品一覧</h2>
           <hr>
           <ul id="product-list">
             <?php

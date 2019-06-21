@@ -21,6 +21,12 @@ class ProductModel extends CI_Model{
 
     }
 
+    function selectCategory($category_code){
+        $query = $this->db->query("SELECT * FROM product where category_code='$category_code' order by product_date desc");
+
+        return $query->result_array();
+    }
+
 
 
 }

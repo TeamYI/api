@@ -54,15 +54,22 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route["login"] = "LoginController" ;
+$route["join"] = "LoginController/join" ;
+$route["userJoin"] = "LoginController/userJoin" ;
+$route["userCheck"] = "LoginController/userCheck" ;
 $route["userlogin"] = "LoginController/userLogin" ;
 $route["logout"] = "LoginController/logout";
 
 $route["productList"] = "ProductController";
+$route["categoryList"] = "ProductController/categoryList";
 $route["product/(:any)"] = "ProductController/product/$1";
 
 $route["buyPageMove"] = "BuyController/buyPageMove";
 $route["buy"] = "BuyController/buy";
+$route["buyComplete"] = "BuyController/buyComplete";
 
 $route["cart"] = "CartController/cart";
+$route["cartInsert"] = "CartController/cartInsert";
+$route["cartDelete"]= "CartController/cartDelete";
 
 $route["main"] = "MainController" ;

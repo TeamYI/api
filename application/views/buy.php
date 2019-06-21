@@ -30,7 +30,6 @@
               </a>
             </li>
             <li><a href="cart">Cart</a></li>
-            <li><a href="">My page</a></li>
             <li>
             <?php
               if(isset($_SESSION["user_id"])){
@@ -75,59 +74,70 @@
                 </tr>
               </thead>
               <tbody>
+                <?php for($i=0 ; $i < count($list); $i++ ){ ?>
                 <tr>
                   <td>
-                    <img src="./img/<?php echo $img ?>" class="buy-product-img" alt="">
+                    <img src="./img/<?php echo $list[$i]->product_img ; ?>" class="buy-product-img" alt="">
                   </td>
                   <td>
                     <div>カロンカロン</div>
-                    <div><?php echo $name ?></div>
+                    <div><?php echo $list[$i]->product_name ; ?></div>
                   </td>
                   <td>
-                    <span><?php echo $price ?></span>
+                    <span class="buy-product-price"><?php echo $list[$i]->sum_price ; ?></span>
                   </td>
                   <td>
-                    <span><?php echo $amount ?></span>
+                    <span><?php echo $list[$i]->product_amount ; ?></span>
                   </td>
                   <td>
-                    <span><?php echo $delivery ?></span>
+                  <?php
+                      $sum = $list[$i]->sum_price ;
+                      if($sum < 2000){ ?>
+                            <span>250</span>
+                  <?php }else{ ?>
+                            <span>0</span>
+                  <?php };?>
                   </td>
                 </tr>
+              <?php };?>
               </tbody>
             </table>
+        </div>
+        <div id="buy-total-wrap">
+          <div class="default-pay buy-pay">
+              <span>注文商品金額</span>
+              <span>0</span>
+              <img src="./img/plus.png" alt="">
           </div>
-          <div id="buy-total-wrap">
-            <div class="default-pay buy-pay">
-                <span>注文商品金額</span>
-                <span><?php echo $price ?></span>
-                <img src="./img/plus.png" alt="">
-            </div>
-            <div class="delivery-pay buy-pay">
-                <span>配送料</span>
-                <span><?php echo $delivery ?></span>
-                <img src="./img/equal.png" alt="">
-            </div>
-            <div class="total buy-pay">
-                <span>総注文金額</span>
-                <span><?php echo $sum ?></span>
-            </div>
+          <div class="delivery-pay buy-pay">
+              <span>配送料</span>
+              <span>0</span>
+              <img src="./img/equal.png" alt="">
+          </div>
+          <div class="total buy-pay">
+              <span>総注文金額</span>
+              <span>0</span>
           </div>
         </div>
+      </div>
         <div id="buy-section">
           <div class="buy-head-title">注文商品</div>
-            <form id="ProductBuy"  method="post">
-              <input type="hidden" name="product_code" value="<?php echo $code ?>">
-              <input type="hidden" name="sum_price" value="<?php echo $sum ?>">
-              <input type="hidden" name="product_amount" value="<?php echo $amount ?>">
+            <form id="ProductBuy"  method="post" action="/shop/buy" onsubmit="return ProductBuyCheck()">
+              <?php for($i=0 ; $i < count($list); $i++ ){ ?>
+              <input type="hidden" name="product_code[]" value="<?php echo $list[$i]->product_code ; ?>">
+              <input type="hidden" name="product_amount[]" value="<?php echo $list[$i]->product_amount ; ?>">
+              <?php } ;?>
+              <input type="hidden" id="buy-sum-price" name="sum_price" value="">
               <div id="buy-info">
+                <?php if(isset($_SESSION["user_id"])){ ?>
                 <dl>
                   <dt>お名前</dt>
-                  <dd><input type="text" name="name" value="yun"></dd>
+                  <dd><input type="text" name="name" value="<?php echo $info[0]->user_name ?>"></dd>
                   <dt>郵便番号</dt>
-                  <dd><input type="text" name="post" value="0620904"></dd>
+                  <dd><input type="text" name="post" value="<?php echo $info[0]->postcode ?>"></dd>
                   <dt>都道府県</dt>
                   <dd>
-                    <select name="area" value="1">
+                    <select name="area" value="<?php echo $info[0]->area ?>">
                       <option value="1">愛知県</option>
                       <option value="2">青森県</option>
                       <option value="3">秋田県</option>
@@ -173,27 +183,103 @@
                     </select>
                   </dd>
                   <dt>市区郡</dt>
-                  <dd><input type="text" name="city" value="toyohira"></dd>
+                  <dd><input type="text" name="city" value="<?php echo $info[0]->city ?>"></dd>
                   <dt>町村字番地</dt>
                   <dd>
                     <div id="buy-address">
                       <div>
                         <div>町村字</div>
-                        <input type="text" name="addr1" id="buy-addr1" value="aaaaa">
+                        <input type="text" name="addr1" id="buy-addr1" value="<?php echo $info[0]->address1 ?>">
                       </div>
                       <div>
                         <div>番地</div>
-                        <input type="text" name="addr2" value="bbbbb">
+                        <input type="text" name="addr2" value="<?php echo $info[0]->address2 ?>">
                       </div>
                     </div>
                   </dd>
                   <dt>建物名（部屋番号)</dt>
-                  <dd><input type="text" name="addr3" id="buy-addr3" value="ccccc"></dd>
+                  <dd><input type="text" name="addr3" id="buy-addr3" value="<?php echo $info[0]->address3 ?>"></dd>
                   <dt>お電話番号</dt>
-                  <dd><input type="text" name="tel" value="0107405"></dd>
+                  <dd><input type="text" name="tel" value="<?php echo $info[0]->hp ?>"></dd>
                   <dt>メールアドレス</dt>
-                  <dd><input type="text" name="email" value="valen7009@aaa.com"></dd>
+                  <dd><input type="text" name="email" value="<?php echo $info[0]->email ?>"></dd>
                 </dl>
+                <?php }else{   ?>
+                  <dl>
+                    <dt>お名前</dt>
+                    <dd><input type="text" name="name" value=""></dd>
+                    <dt>郵便番号</dt>
+                    <dd><input type="text" name="post" value=""></dd>
+                    <dt>都道府県</dt>
+                    <dd>
+                      <select name="area" value="">
+                        <option value="1">愛知県</option>
+                        <option value="2">青森県</option>
+                        <option value="3">秋田県</option>
+                        <option value="4">石川県</option>
+                        <option value="5">茨城県</option>
+                        <option value="6">岩手県</option>
+                        <option value="7">愛媛県</option>
+                        <option value="8">大分県</option>
+                        <option value="9">大阪府</option>
+                        <option value="10">岡山県</option>
+                        <option value="11">香川県</option>
+                        <option value="12">鹿児島県</option>
+                        <option value="13">神奈川県</option>
+                        <option value="14">岐阜県</option>
+                        <option value="15">京都府</option>
+                        <option value="16">熊本県</option>
+                        <option value="17">群馬県</option>
+                        <option value="18">高知県</option>
+                        <option value="19">埼玉県</option>
+                        <option value="20">佐賀県</option>
+                        <option value="21">東京都</option>
+                        <option value="22">徳島県</option>
+                        <option value="23">栃木県</option>
+                        <option value="24">鳥取県</option>
+                        <option value="25">富山県</option>
+                        <option value="26">長崎県</option>
+                        <option value="27">長野県</option>
+                        <option value="28">奈良県</option>
+                        <option value="29">新潟県</option>
+                        <option value="30">兵庫県</option>
+                        <option value="31">広島県</option>
+                        <option value="32">福井県</option>
+                        <option value="33">福岡県</option>
+                        <option value="34">福島県</option>
+                        <option value="35">北海道</option>
+                        <option value="36">三重県</option>
+                        <option value="37">宮城県</option>
+                        <option value="38">宮崎県</option>
+                        <option value="39">山形県</option>
+                        <option value="40">山口県</option>
+                        <option value="41">山梨県</option>
+                        <option value="42">和歌山県</option>
+                      </select>
+                    </dd>
+                    <dt>市区郡</dt>
+                    <dd><input type="text" name="city" value=""></dd>
+                    <dt>町村字番地</dt>
+                    <dd>
+                      <div id="buy-address">
+                        <div>
+                          <div>町村字</div>
+                          <input type="text" name="addr1" id="buy-addr1" value="">
+                        </div>
+                        <div>
+                          <div>番地</div>
+                          <input type="text" name="addr2" value="">
+                        </div>
+                      </div>
+                    </dd>
+                    <dt>建物名（部屋番号)</dt>
+                    <dd><input type="text" name="addr3" id="buy-addr3" value=""></dd>
+                    <dt>お電話番号</dt>
+                    <dd><input type="text" name="tel" value=""></dd>
+                    <dt>メールアドレス</dt>
+                    <dd><input type="text" name="email" value=""></dd>
+                  </dl>
+                <?php } ?>
               </div>
               <div id="pay-select-wrap">
                 <div class="buy-head-title">お支払い方法選択</div>

@@ -29,8 +29,7 @@
                 ?>
               </a>
             </li>
-            <li><a href="cart">Cart</a></li>
-            <li><a href="">My page</a></li>
+            <li><a href="/shop/cart">Cart</a></li>
             <li>
             <?php
               if(isset($_SESSION["user_id"])){
@@ -45,7 +44,7 @@
         </div>
         <div id="header-menu">
           <ul id="header-menu-cate">
-            <a href="productList"><li>SHOP</li></a>
+            <a href="/shop/productList"><li>SHOP</li></a>
             <a href=""><li>MAGAZINE</li></a>
             <a href=""><li>EVENT</li></a>
             <a href=""><li>NOTICE</li></a>
@@ -91,7 +90,7 @@
                       <span>수량 </span>
                       <input type="text"  name="amount" value="1">
                     </li>
-                    <button id="product-cart" class="product-btn" onclick="Cart()" name="">CART</button>
+                    <button id="product-cart" class="product-btn" onclick="CartInsert()" name="">CART</button>
                     <button id="product-buy" class="product-btn" onclick="BuyPageMove()" name="">BUY</button>
                   </ul>
                 </form>
