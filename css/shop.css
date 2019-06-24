@@ -672,3 +672,161 @@ header #header-search #header-search-container{
     color: white;
     cursor: pointer;
 }
+
+/* ーーーーーーMYPAGE----------- */
+
+#wrap-mypage {
+  margin-top: 80px;
+  /* background: green ; */
+  float: left;
+  max-width: 964px;
+  width: 100%;
+
+
+}
+
+#wrap-mypage h2 {
+  margin-left: 40px;
+}
+
+#mypage-buy-wrap table {
+    margin-top: 43px;
+    text-align: center;
+    width: 100%;
+
+}
+#mypage-buy-wrap thead th {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(161, 162, 160);
+}
+#mypage-buy-wrap img {
+    width: 210px;
+    height: 90px;
+}
+
+#mypage-buy-wrap tbody tr td{
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#mypage-buy-wrap tbody td{
+    padding: 20px 0;
+}
+
+#mypage-buy-wrap .buy-code {
+    text-decoration: underline;
+}
+
+.mypage-buy-name1 {
+    font-size: 12px;
+}
+
+/* --------------buy history -------------- */
+
+#buyhis-wrap {
+  margin-top: 55px;
+
+}
+
+#buyhis-title {
+  border-bottom: 1px solid black;
+  padding: 20px;
+}
+#buyhis-wrap table {
+    margin-top: 43px;
+    text-align: center;
+    width: 100%;
+}
+#buyhis-wrap thead th {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(161, 162, 160);
+}
+
+
+#buyhis-wrap tbody tr td{
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#buyhis-wrap tbody td{
+    padding: 20px 0;
+}
+
+#buy-info dl {
+    padding: 10px;
+    font-size: 20px;
+}
+
+#buy-info dt {
+    width: 200px;
+    float: left ;
+}
+
+#buy-info dd  {
+    margin-bottom: 50px;
+
+}
+
+#buy-info dd input {
+    border: none ;
+    border-bottom: 1px solid black;
+    width: 190px;
+    height: 30px;
+    font-size: 21px;
+}
+#buy-address {
+    width: 500px;
+    height: 150px;
+    margin-left: 160px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+#buy-address div:nth-child(2){
+    margin-top: 43px;
+}
+
+#buy-address div div {
+    width: 95px;
+    display: inline-block;
+
+}
+
+#buy-address #buy-addr1{
+    width: 250px;
+}
+
+#buy-address #buy-addr3 {
+    width: 250px;
+}
+
+#buy-section button {
+    width: 300px;
+    height: 60px;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgb(104, 226, 94);
+}
+
+#pay-select-wrap {
+    margin: 50px 0;
+    padding-bottom: 50px;
+    border-top: 1px solid black ;
+    border-bottom: 1px solid black;
+}
+#buy-info select {
+    width: 140px;
+    height: 36px;
+    font-size: 21px;
+}
+#pay-select-wrap dt {
+    float: left;
+}

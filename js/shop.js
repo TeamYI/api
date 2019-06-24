@@ -391,3 +391,26 @@ function pageSwitchNB(name){
    console.log("name :" +  $("#main-medium-text a").length);
 
 }
+
+function AA(){
+  var check = $("input[name='check[]']:checked");
+
+  $.ajax({
+    url : "bb",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      check : check
+    },
+    success: function(data){
+      console.log(data);
+    },
+    error : function(request,status,error){
+      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+
+    }
+  });
+
+
+}

@@ -20,8 +20,31 @@ class BuyModel extends CI_Model{
         return $query->row();
     }
 
+    function buyHistory($user_id){
+        $query = $this->db->query("select count(*) as count, c.buy_code, b.product_img, b.product_name ,c.buy_price, DATE_FORMAT(c.buy_date, '%Y-%m-%d') as buy_date from buy as a join product as b
+                                   on a.product_code = b.product_code
+                                   left join buydetail as c
+                                   on a.buy_code = c.buy_code
+                                   where user_id = '$user_id' group by c.buy_code HAVING COUNT(count) order by buy_date desc ;  ") ;
 
+        return $query->result_array();
+    }
 
+    function buyHistoryDetPro($buyCode){
+        $query = $this->db->query("select b.product_img , b.product_name, b.product_price , a.product_amount, a.product_amount*b.product_price as sum_price
+                                   from buy as a join product as b
+                                   on a.product_code = b.product_code
+                                   where buy_code = '$buyCode'");
+
+        return $query->result_array();
+    }
+
+    function buyHistoryDetAddress($buyCode){
+        $query = $this->db->query("select * from buydetail
+                                   where buy_code = '$buyCode'");
+
+        return $query->row();
+    }
 }
 
 ?>

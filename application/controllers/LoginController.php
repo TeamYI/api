@@ -8,6 +8,25 @@ class LoginController extends CI_Controller{
     $this->load->model("UserModel");
   }
 
+  public function aa(){
+
+    $this->load->view("aa");
+
+  }
+
+  public function bb(){
+
+      $b = 0 ;
+      $A = $_POST["check"];
+
+      for($i=0; $i<count($A); $i++){
+          $b += 1 ;
+      }
+
+      echo $b;
+
+  }
+
   public function index(){
 
     $this->load->view("login");
