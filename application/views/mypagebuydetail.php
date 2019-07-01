@@ -157,7 +157,7 @@
 						</dd>
 						<dt>町村字番地</dt>
 						<dd>
-							<div id="buy-address">
+							<div id="buyhis-address">
 								<div>
 									<div>町村字</div>
 									<span><?php echo $address->address1 ?></span>
@@ -170,7 +170,7 @@
 						</dd>
 						<dt>建物名（部屋番号)</dt>
 						<dd>
-							<span><?php echo $address->address3 ?></span>
+							<span><?php echo $address->address3 ?>  </span>
 						</dd>
 						<dt>お電話番号</dt>
 						<dd>

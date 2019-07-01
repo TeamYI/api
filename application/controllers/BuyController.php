@@ -160,10 +160,16 @@ class BuyController extends CI_Controller{
   }
 
   public function nouserBuyhis(){
-      $name = $_POST["name"] ;
-      $email = $_POST["email"] ;
+      $name = $_GET["name"] ;
+      $email = $_GET["email"] ;
 
-      $this->BuyDetailModel->insertBuyDetail($data);
+  
+      $data["user"] = $name;
+      $data["list"]= $this->BuyDetailModel->nouserBuyhis($name,$email);
+
+      $this->load->view("nouserBuyhistory",$data);
+
+
   }
 
   public function nouserBuyhisCheck(){

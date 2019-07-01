@@ -200,7 +200,14 @@ header #header-search #header-search-container{
 }
 #login-top span {
   margin-left: 15px;
+  color: rgb(126, 126, 126);
+  cursor: pointer;
 }
+
+#login-top span:nth-child(1) {
+  color: black;
+}
+
 #login-content{
   position: relative;
 }
@@ -255,6 +262,10 @@ header #header-search #header-search-container{
   text-decoration : underline;
 }
 
+#nouserbuyhis-content{
+  display: none ;
+}
+
 #nouserbuyhis-content div:nth-child(1){
   text-align: center;
   font-size: 25px;
@@ -285,8 +296,16 @@ header #header-search #header-search-container{
   border:0;
   outline: 0;
   cursor: pointer;
-  margin: 30px 20px;
+  margin: 20px 20px;
 }
+
+
+
+
+
+
+
+
 
 
 /* ------------join---------------------------- */
@@ -812,6 +831,12 @@ header #header-search #header-search-container{
 
 }
 
+
+#buy-info dd:nth-child(12)  {
+    height: 50px;
+
+}
+
 #buy-info dd input {
     border: none ;
     border-bottom: 1px solid black;
@@ -819,29 +844,28 @@ header #header-search #header-search-container{
     height: 30px;
     font-size: 21px;
 }
-#buy-address {
+#buyhis-address {
     width: 500px;
-    height: 150px;
     margin-left: 160px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 20px;
 }
 
-#buy-address div:nth-child(2){
+#buyhis-address div:nth-child(2){
     margin-top: 43px;
 }
 
-#buy-address div div {
+#buyhis-address div div {
     width: 95px;
     display: inline-block;
 
 }
 
-#buy-address #buy-addr1{
+#buyhis-address #buy-addr1{
     width: 250px;
 }
 
-#buy-address #buy-addr3 {
+#buyhis-address #buy-addr3 {
     width: 250px;
 }
 
@@ -941,4 +965,52 @@ header #header-search #header-search-container{
 #mypage-userinfo div p{
   margin-left: 260;
   color: red ;
+}
+
+/* nouser-buyhistory */
+#wrap-nouserBuyhis {
+  margin-top: 80px;
+  /* background: green ; */
+  float: left;
+  width: 100%;
+
+
+}
+
+#wrap-nouserBuyhis h2 {
+  margin-left: 40px;
+}
+
+#nouser-buy-wrap table {
+    margin-top: 43px;
+    text-align: center;
+    width: 100%;
+
+}
+#nouser-buy-wrap thead th {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(161, 162, 160);
+}
+#nouser-buy-wrap img {
+    width: 210px;
+    height: 90px;
+}
+
+#nouser-buy-wrap tbody tr td{
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#nouser-buy-wrap tbody td{
+    padding: 20px 0;
+}
+
+#nouser-buy-wrap .buy-code {
+    text-decoration: underline;
+}
+
+.nouser-buy-name1 {
+    font-size: 12px;
 }

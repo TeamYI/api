@@ -37,10 +37,10 @@
       <section id="section-main">
         <div id="login-form">
           <div id="login-top">
-            <a href="javascript:LoginBuyhistoryChange('login');"><span>LOGIN</span></a>
-            <a href="javascript:LoginBuyhistoryChange('nouserbuyhis');"><span>非会員購入履歴</span></a>
+            <span onclick="LoginBuyhistoryChange('login',this);">LOGIN</span>
+            <span onclick="LoginBuyhistoryChange('nouserbuyhis',this);">非会員購入履歴</span>
           </div>
-          <div id="login-content" style="display:none">
+          <div id="login-content" class="account-content">
             <div>LOGIN</div>
             <form class="" action="userlogin" method="post">
               <label for="user_id">ID</label>
@@ -58,9 +58,9 @@
                 <p>新規会員登録</p>
             </a>
           </div>
-          <div id="nouserbuyhis-content" >
+          <div id="nouserbuyhis-content" class="account-content">
             <div>非会員購入履歴</div>
-            <form class="" action="nouserBuyhis" method="post">
+            <form id="nouserbuyhisForm" action="" method="post">
               <label for="name">お名前</label>
               <input type="text" name="name">
               <br>
@@ -69,9 +69,6 @@
               <br>
               <input type="button" onclick="nouserBuyhis()" value="検索">
             </form>
-            <div id="nouserbuyhis-error">
-              <p>ID・PWが間違います。</p>
-            </div>
           </div>
       </section>
       <footer id="footer">

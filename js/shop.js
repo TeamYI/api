@@ -329,7 +329,7 @@ function passwordCheck(){
 function CheckId(position){
   var user_id = $("input[name='id']").val();
   var p_tag = position.nextElementSibling ;
-
+  console.log(position);
   $.ajax({
     url : "userCheck",
     type : "post",
@@ -432,13 +432,14 @@ function userJoinCheck(){
 }
 
 // login or nouser buyhistory pagechange
-function LoginBuyhistoryChange(page){
-  var loginPage = $("#login-content");
-  var buyhisPage = $("#nouserbuyhis-content");
+function LoginBuyhistoryChange(page,position){
+  var pageAll = $(".account-content");
 
-  loginPage.css("display","none");
-  buyhisPage.css("display","none");
+  pageAll.css("display","none");
+  $("#login-top span").css("color","rgb(126, 126, 126)");
 
+  console.log(position);
+  position.style.color = "black";
   $("#"+page+"-content").css("display","block");
 }
 
@@ -458,8 +459,12 @@ function nouserBuyhis(){
       email : email
     },
     success: function(data){
-
-      $("#nouserbuyhisForm").attr("action", "/shop/nouserBuyhis");
+      if(data>0){
+        console.log(data);
+        location.href="nouserBuyhis?name="+name+"&email="+email;
+      }else{
+        alert("購入履歴がありません");
+      }
 
     },
     error : function(request,status,error){
