@@ -20,24 +20,23 @@
 			<div id="nav-user-menu">
 				<ul id="header-nav-actions">
 					<li>
-						<?php
-                  if(isset($_SESSION["user_id"])){
-                      echo $_SESSION["user_id"] ;
-                  }else { ?>
-						<a href="login">
 							<?php
-                    echo "My Account";
-                  }
-                ?>
+								if(isset($_SESSION["user_id"])){
+										echo $_SESSION["user_id"]."様" ;
+								}else { ?>
+							<a href="login">
+							<?php
+									echo "My Account";
+								}
+							?>
 						</a>
 					</li>
-					<li><a href="cart">Cart</a></li>
-					<li>
-						<?php
-              if(isset($_SESSION["user_id"])){
-            ?><a href="logout">logout</a></li>
+					<li><a href="cart">CART</a></li>
+					<?php
+						if(isset($_SESSION["user_id"])){ ?>
+							<li><a href="mypage">MYPAGE</a></li>
+							<li><a href="logout">LOGOUT</a></li>
 					<?php } ?>
-
 				</ul>
 			</div>
 			<div id="header-search">
@@ -64,7 +63,19 @@
 		<section id="section-main">
 			<div id="buyhis-wrap">
 				<div id="buyhis-title">
-					<h2>購入履歴</h2>
+					<h2>購入履歴 : <?php echo $address->buy_code; ?></h2>
+					<div>
+						<span>決済方法 : </span>
+						<span><?php echo $address->payment_name; ?></span>
+					</div>
+					<div>
+						<span>決済状態 : </span>
+					<?php if(($address->payment_check)=="X"){  ?>
+						<span style="background:red ;">未入金</span>
+					<?php }else{ ?>
+						<span style="background:green;" >入金完了</span>
+					<?php } ?>
+					</div>
 				</div>
 				<div class="buy-head-title">注文商品</div>
 				<table>
@@ -104,23 +115,23 @@
 								<span><?php echo $product["sum_price"] ?></span>
 							</td>
 						</tr>
-					<?php } echo print_r($address) ?>
+					<?php } ?>
 					</tbody>
 				</table>
-				<div id="buy-total-wrap">
+				<div id="buyhis-total-wrap">
 					<div class="default-pay buy-pay">
 							<span>注文商品金額</span>
-							<span>0</span>
-							<img src="./img/plus.png" alt="">
+							<span><?php echo $pay["buy_pay"] ?></span>
+							<img src="../img/plus.png" alt="">
 					</div>
 					<div class="delivery-pay buy-pay">
 							<span>配送料</span>
-							<span>0</span>
-							<img src="./img/equal.png" alt="">
+							<span><?php echo $pay["delivery_pay"] ?></span>
+							<img src="../img/equal.png" alt="">
 					</div>
 					<div class="total buy-pay">
 							<span>総注文金額</span>
-							<span>0</span>
+							<span><?php echo $pay["sum_pay"] ?></span>
 					</div>
 				</div>
 			</div>
@@ -138,29 +149,37 @@
 						</dd>
 						<dt>都道府県</dt>
 						<dd>
-							<span><?php echo $address->post ?></span>
+							<span><?php echo $address->area_name ?></span>
 						</dd>
 						<dt>市区郡</dt>
-						<dd><input type="text" name="city" value=""></dd>
+						<dd>
+							<span><?php echo $address->city ?></span>
+						</dd>
 						<dt>町村字番地</dt>
 						<dd>
 							<div id="buy-address">
 								<div>
 									<div>町村字</div>
-									<input type="text" name="addr1" id="buy-addr1" value="">
+									<span><?php echo $address->address1 ?></span>
 								</div>
 								<div>
 									<div>番地</div>
-									<input type="text" name="addr2" value="">
+									<span><?php echo $address->address2 ?></span>
 								</div>
 							</div>
 						</dd>
 						<dt>建物名（部屋番号)</dt>
-						<dd><input type="text" name="addr3" id="buy-addr3" value=""></dd>
+						<dd>
+							<span><?php echo $address->address3 ?></span>
+						</dd>
 						<dt>お電話番号</dt>
-						<dd><input type="text" name="tel" value=""></dd>
+						<dd>
+							<span><?php echo $address->hp ?></span>
+						</dd>
 						<dt>メールアドレス</dt>
-						<dd><input type="text" name="email" value=""></dd>
+						<dd>
+							<span><?php echo $address->email ?></span>
+						</dd>
 					</dl>
 				</div>
 			</div>

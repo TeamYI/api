@@ -69,7 +69,7 @@ class LoginController extends CI_Controller{
 
     $this->UserModel->userJoin($data);
 
-    redirect('/login');
+    redirect('./login');
 
   }
 

@@ -77,5 +77,8 @@ $route["cartDelete"]= "CartController/cartDelete";
 
 $route["mypage"] = "MypageController/buyHistory";
 $route["buyHistoryDetail/(:any)"] = "MypageController/buyHistoryDetail/$1";
+$route["mypageUserCheck"] = "MypageController/mypageUserCheck";
+$route["userInfoChange"] = "MypageController/userInfoChange";
+
 
 $route["main"] = "MainController" ;

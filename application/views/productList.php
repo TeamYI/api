@@ -20,7 +20,7 @@
             <li>
                 <?php
                   if(isset($_SESSION["user_id"])){
-                      echo $_SESSION["user_id"] ;
+                      echo $_SESSION["user_id"]."様" ;
                   }else { ?>
                 <a href="login">
                 <?php
@@ -29,13 +29,12 @@
                 ?>
               </a>
             </li>
-            <li><a href="cart">Cart</a></li>
-            <li>
+            <li><a href="cart">CART</a></li>
             <?php
-              if(isset($_SESSION["user_id"])){
-            ?><a href="logout">logout</a></li>
-          <?php } ?>
-
+              if(isset($_SESSION["user_id"])){ ?>
+                <li><a href="mypage">MYPAGE</a></li>
+                <li><a href="logout">LOGOUT</a></li>
+            <?php } ?>
           </ul>
         </div>
         <div id="header-search">

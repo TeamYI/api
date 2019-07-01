@@ -61,17 +61,17 @@
               <br>
               <div>
                 <label for="email">メールアドレス</label>
-                <input type="text" name="email" value="aaaaa">
+                <input type="text" name="email">
               </div>
               <br>
               <div>
                 <label for="name">お名前</label>
-                <input type="text" name="name" value="aaaaa">
+                <input type="text" name="name" >
               </div>
               <br>
               <div>
                 <label for="post">郵便番号</label>
-                <input type="text" name="post" value="aaaaa">
+                <input type="text" name="post" >
               </div>
               <br>
               <div>
@@ -124,7 +124,7 @@
               <br>
               <div>
                 <label for="city">市区郡</label>
-                <input type="text" name="city" value="aaaaa">
+                <input type="text" name="city" >
               </div>
               <br>
               <div>
@@ -132,23 +132,23 @@
                 <div id="join-address" >
                     <div>
                       <div>町村字</div>
-                      <input type="text" name="addr1" id="buy-addr1" value="aaaaa">
+                      <input type="text" name="addr1" id="buy-addr1" >
                     </div>
                     <div>
                       <div>番地</div>
-                      <input type="text" name="addr2" value="bbbbb">
+                      <input type="text" name="addr2" >
                     </div>
                   </div>
               </div>
               <br>
               <div>
                 <label for="addr3">建物名（部屋番号）</label>
-                <input type="text" name="addr3" value="aaaaa">
+                <input type="text" name="addr3" >
               </div>
               <br>
               <div>
                 <label for="tel">お電話番号</label>
-                <input type="text" name="tel" value="aaaaa">
+                <input type="text" name="tel" >
               </div>
               <br>
               <input type="submit" value="JOIN" onclick="userJoin()">

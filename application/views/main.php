@@ -53,7 +53,7 @@
       <section id="section-main">
         <div id="slide">
           <img src="./img/main-contain-01.jpg" class="active" alt="" style="z-index:999">
-          <img src="./img/main-contain-02.png" class="1" alt="" style="z-index:998">
+          <img src="./img/main-contain-02.jpg" class="1" alt="" style="z-index:998">
           <img src="./img/main-contain-03.png" class="2" alt="" style="z-index:997">
           <img src="./img/main-contain-04.png" class="3" alt="">
         </div>

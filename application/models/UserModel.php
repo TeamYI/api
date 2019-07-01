@@ -42,6 +42,16 @@ class UserModel extends CI_Model{
         return $query->result();
     }
 
+    function userInfoChange($data,$user_id){
+        $query = $this->db->update('user', $data, "user_id = '$user_id'");
+
+        if($query){
+          return true;
+        }else{
+          return false;
+        }
+    }
+
 }
 
 ?>

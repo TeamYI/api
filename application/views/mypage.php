@@ -20,24 +20,23 @@
 			<div id="nav-user-menu">
 				<ul id="header-nav-actions">
 					<li>
-						<?php
-                  if(isset($_SESSION["user_id"])){
-                      echo $_SESSION["user_id"] ;
-                  }else { ?>
-						<a href="login">
 							<?php
-                    echo "My Account";
-                  }
-                ?>
+								if(isset($_SESSION["user_id"])){
+										echo $_SESSION["user_id"]."様" ;
+								}else { ?>
+							<a href="login">
+							<?php
+									echo "My Account";
+								}
+							?>
 						</a>
 					</li>
-					<li><a href="cart">Cart</a></li>
-					<li>
-						<?php
-              if(isset($_SESSION["user_id"])){
-            ?><a href="logout">logout</a></li>
+					<li><a href="cart">CART</a></li>
+					<?php
+						if(isset($_SESSION["user_id"])){ ?>
+							<li><a href="mypage">MYPAGE</a></li>
+							<li><a href="logout">LOGOUT</a></li>
 					<?php } ?>
-
 				</ul>
 			</div>
 			<div id="header-search">
@@ -71,7 +70,7 @@
 				<div class="sub-menu">
 					<ul>
 						<li><a href="">購入履歴</a></li>
-						<li><a href="">会員情報変更</a></li>
+						<li><a href="javascript:userInfoChangePage();">会員情報変更</a></li>
 					</ul>
 				</div>
 			</div>
@@ -119,7 +118,13 @@
 									?></div>
 							</td>
 							<td>
-								<span><?php echo $list["buy_price"] ?></span>
+								<span>
+									<?php if($list["buy_price"] < 2000){
+														echo $list["buy_price"]+250 ;
+											  }else{
+														echo $list["buy_price"];
+												}
+								 	?></span>
 							</td>
 							<td>
 								<span><?php echo $list["buy_date"] ?></span>

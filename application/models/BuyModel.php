@@ -25,7 +25,7 @@ class BuyModel extends CI_Model{
                                    on a.product_code = b.product_code
                                    left join buydetail as c
                                    on a.buy_code = c.buy_code
-                                   where user_id = '$user_id' group by c.buy_code HAVING COUNT(count) order by buy_date desc ;  ") ;
+                                   where user_id = '$user_id' group by c.buy_code HAVING COUNT(count) order by buy_date desc ;   ") ;
 
         return $query->result_array();
     }
@@ -40,8 +40,11 @@ class BuyModel extends CI_Model{
     }
 
     function buyHistoryDetAddress($buyCode){
-        $query = $this->db->query("select * from buydetail
-                                   where buy_code = '$buyCode'");
+        $query = $this->db->query("select * from buydetail as a join area as b
+                                   on a.area_code = b.area_code
+                                   left join payment as c
+                                   on a.payment_code = c.payment_code
+                                   where buy_code = '$buyCode' ");
 
         return $query->row();
     }

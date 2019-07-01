@@ -5,6 +5,7 @@ var slideCount = 0 ;
 //current position
 var curr_position ;
 var joinIdCheck = 0 ;
+
 $(document).ready(function(){
 
     //image length
@@ -21,10 +22,293 @@ $(document).ready(function(){
     checkedSum();
 
 
+    area_select();
+
+
+});
+
+//mypage
+function userInfoChangePage(){
+  var wrap = $("#wrap-mypage");
+  wrap.empty();
+
+  var text = "<h2>会員情報変更</h2>"
+            +"<hr>"
+              +"<div id='mypage-userinfo-check'>"
+              +"<div>* 会員情報の保安をために、パスワードを入力してください。</div>"
+              +"<label for=''>パスワード</label>"
+              +"<input type='password' name='pw' value=''>"
+              +"<button type='button' onclick='mypagePwCheck()'>確認</button>" ;
+
+  wrap.append(text);
+}
+
+function mypagePwCheck(){
+  var user_pw = $("input[name='pw']").val();
+  var wrap = $("#wrap-mypage");
+  wrap.empty();
+
+  $.ajax({
+    url : "mypageUserCheck",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      user_pw : user_pw
+    },
+    dataType : "json",
+    async : false,
+    success: function(data){
+      if(data.length){
+        var text = "<div id='mypage-userinfo'>"
+        					+"<div>"
+        							+"<label for='id'>ID</label>"
+        							+"<span>"+data[0].user_id+"</span>"
+        					+"</div>"
+        					+"<br>"
+        					+"<div>"
+        							+"<label for='pw'>パスワード</label>"
+        							+"<input type='password' name='pw'>"
+        					+"</div>"
+        					+"<br>"
+        					+"<div>"
+        							+"<label for='rpw'>確認のためもう一度入力</label>"
+        							+"<input type='password' name='rpw' onkeyup='passwordCheck()'>"
+        							+"<p></p>"
+        					+"</div>"
+        					+"<br>"
+        					+"<div>"
+        							+"<label for='email'>メールアドレス</label>"
+        							+"<input type='text' name='email' value='"+data[0].email+"'>"
+        					+"</div>"
+        					+"<br>"
+        					+"<div>"
+        							+"<label for='name'>お名前</label>"
+        							+"<input type='text' name='name' value='"+data[0].user_name+"'>"
+        					+"</div>"
+        					+"<br>"
+        					+"<div>"
+        							+"<label for='post'>郵便番号</label>"
+        							+"<input type='text' name='post' value='"+data[0].postcode+"' >"
+        					+"</div>"
+        					+"<br>"
+        					+"<div>"
+        							+"<label for='area'>都道府県</label>"
+                      +"<select name='area' area_code='"+data[0].area_code+"'>"
+                        +"<option value='1'>愛知県</option>"
+                        +"<option value='2'>青森県</option>"
+                        +"<option value='3'>秋田県</option>"
+                        +"<option value='4'>石川県</option>"
+                        +"<option value='5'>茨城県</option>"
+                        +"<option value='6'>岩手県</option>"
+                        +"<option value='7'>愛媛県</option>"
+                        +"<option value='8'>大分県</option>"
+                        +"<option value='9'>大阪府</option>"
+                        +"<option value='10'>岡山県</option>"
+                        +"<option value='11'>香川県</option>"
+                        +"<option value='12'>鹿児島県</option>"
+                        +"<option value='13'>神奈川県</option>"
+                        +"<option value='14'>岐阜県</option>"
+                        +"<option value='15'>京都府</option>"
+                        +"<option value='16'>熊本県</option>"
+                        +"<option value='17'>群馬県</option>"
+                        +"<option value='18'>高知県</option>"
+                        +"<option value='19'>埼玉県</option>"
+                        +"<option value='20'>佐賀県</option>"
+                        +"<option value='21'>東京都</option>"
+                        +"<option value='22'>徳島県</option>"
+                        +"<option value='23'>栃木県</option>"
+                        +"<option value='24'>鳥取県</option>"
+                        +"<option value='25'>富山県</option>"
+                        +"<option value='26'>長崎県</option>"
+                        +"<option value='27'>長野県</option>"
+                        +"<option value='28'>奈良県</option>"
+                        +"<option value='29'>新潟県</option>"
+                        +"<option value='30'>兵庫県</option>"
+                        +"<option value='31'>広島県</option>"
+                        +"<option value='32'>福井県</option>"
+                        +"<option value='33'>福岡県</option>"
+                        +"<option value='34'>福島県</option>"
+                        +"<option value='35'>北海道</option>"
+                        +"<option value='36'>三重県</option>"
+                        +"<option value='37'>宮城県</option>"
+                        +"<option value='38'>宮崎県</option>"
+                        +"<option value='39'>山形県</option>"
+                        +"<option value='40'>山口県</option>"
+                        +"<option value='41'>山梨県</option>"
+                        +"<option value='42'>和歌山県</option>"
+                      +"</select>"
+                      +"</div>"
+                      +"<br>"
+                      +"<div>"
+                        +"<label for='city'>市区郡</label>"
+                        +"<input type='text' name='city' value='"+data[0].city+"'>"
+                      +"</div>"
+                      +"<br>"
+                      +"<div>"
+                        +"<label>町村字番地</label>"
+                        +"<div id='join-address'>"
+                          +"<div>"
+                            +"<div>町村字</div>"
+                            +"<input type='text' name='addr1' id='buy-addr1' value='"+data[0].address1+"' >"
+                          +"</div>"
+                          +"<div>"
+                            +"<div>番地</div>"
+                            +"<input type='text' name='addr2' value='"+data[0].address2+"' >"
+                          +"</div>"
+                        +"</div>"
+                      +"</div>"
+                      +"<br>"
+                      +"<div>"
+                      +"<label for='addr3'>建物名（部屋番号）</label>"
+                      +"<input type='text' name='addr3' value='"+data[0].address3+"' >"
+                      +"</div>"
+                      +"<br>"
+                      +"<div>"
+                      +"<label for='tel'>お電話番号</label>"
+                      +"<input type='text' name='tel' value='"+data[0].hp+"' >"
+                      +"</div>"
+                      +"<br>"
+                      +"<button type='button' onclick='userInfoChange()'>変更</button>"
+        				+"</div>";
+
+                wrap.append(text);
+                area_select(data[0].area_code);
+
+      }else{
+        var text = "<h2>会員情報変更</h2>"
+                  +"<hr>"
+                    +"<div id='mypage-userinfo-check'>"
+                    +"<div>* 会員情報の保安をために、パスワードを入力してください。</div>"
+                    +"<label for=''>パスワード</label>"
+                    +"<input type='password' name='pw' value=''>"
+                    +"<button type='button' onclick='mypagePwCheck()'>確認</button>" ;
+
+        wrap.append(text);
+      }
 
 
 
+    },
+    error : function(request,status,error){
+      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+
+    }
+  });
+
+}
+
+function userInfoChange(){
+  var id = $("input[name='id']");
+  var pw = $("input[name='pw']");
+  var rpw = $("input[name='rpw']");
+  var email = $("input[name='email']");
+  var name = $("input[name='name']");
+  var post = $("input[name='post']");
+  var area = $("select[name='area']");
+  var city = $("input[name='city']");
+  var addr1 = $("input[name='addr1']");
+  var addr2 = $("input[name='addr2']");
+  var addr3 = $("input[name='addr3']");
+  var tel = $("input[name='tel']");
+
+  console.log(area.val());
+
+  area.change(function() {
+    var r = $('option:selected').val();
+
+    console.log(r);
 })
+
+  if(pw.val() == ""){
+    alert("パスワード入力してください");
+    pw.focus();
+  }else if(rpw.val() == ""){
+    alert("確認のためもう一度入力してください");
+    rpw.focus();
+  }else if(rpw.val() != pw.val()){
+    console.log(rpw.val());
+    console.log(pw.val());
+    alert("確認のためもう一度入力してください");
+    rpw.focus();
+  }else if(email.val() == ""){
+    alert("メールアドレス入力してください");
+    email.focus();
+  }else if(name.val() == ""){
+    alert("お名前入力してください");
+    name.focus();
+  }else if(post.val() == ""){
+    alert("郵便番号入力してください");
+    post.focus();
+  }else if(area.val() == ""){
+    alert("都道府県入力してください");
+    area.focus();
+  }else if(city.val() == ""){
+    alert("市区郡入力してください");
+    city.focus();
+  }else if(addr1.val() == ""){
+    alert("町村字入力してください");
+    addr1.focus();
+  }else if(addr2.val() == ""){
+    alert("番地入力してください");
+    addr2.focus();
+  }else if(tel.val() == ""){
+    alert("お電話番号入力してください");
+    tel.focus();
+  }
+
+
+  $.ajax({
+    url : "userInfoChange",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      pw : pw.val(),
+      name : name.val(),
+      post : post.val(),
+      area : area.val(),
+      city : city.val(),
+      addr1 : addr1.val(),
+      addr2 : addr2.val(),
+      addr3 : addr3.val(),
+      tel : tel.val(),
+      email : email.val()
+
+    },
+    success: function(data){
+      alert("変更しました。")
+    },
+    error : function(request,status,error){
+      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+
+    }
+  });
+
+
+}
+
+// address need
+function area_select(code){
+  var area_code = $("select[name='area']").attr("area-code");
+
+  //mypage ajax
+  if(code){
+    area_code = code ;
+  }
+
+  console.log(code);
+  $("select[name='area'] option" ).each(function(){
+    // この関数はoption1つごとに実行される
+    // indexに順番が、elementあるいはthisでDOMオブジェクトが取れる
+    var option_code = $(this).val() ;
+
+    if(option_code == area_code){
+      $(this).attr("selected","selected");
+    }
+    console.log(option_code);
+  });
+}
 
 //join password = repassword compare
 function passwordCheck(){
@@ -61,6 +345,7 @@ function CheckId(position){
 
         p_tag.append("他のIDを入力してください。");
       }else{
+        p_tag.append("使えるIDです。");
         joinIdCheck = 1 ;
       }
     },
@@ -241,9 +526,9 @@ function CartInsert(){
 function checkedSum(){
 
   var sum = 0;
-  var sumPosition = $(".default-pay span:nth-child(2)") ;
-  var deliPosition = $(".delivery-pay span:nth-child(2)") ;
-  var total = $(".total span:nth-child(2)") ;
+  var sumPosition = $("#buy-total-wrap .default-pay span:nth-child(2)") ;
+  var deliPosition = $("#buy-total-wrap .delivery-pay span:nth-child(2)") ;
+  var total = $("#buy-total-wrap .total span:nth-child(2)") ;
   var buy_sum = $("#buy-sum-price") ;
 
   var deliPay = parseInt(250);

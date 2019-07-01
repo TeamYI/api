@@ -830,3 +830,74 @@ header #header-search #header-search-container{
 #pay-select-wrap dt {
     float: left;
 }
+
+#buyhis-total-wrap {
+    display: table;
+    position: relative;
+    width: 100%;
+    margin: 40px 0 80px;
+    padding: 40px 0;
+    background-color: #fafafa;
+    border-top: 1px solid #e2e2e2;
+    font-size: 20px;
+
+}
+
+#buyhis-total-wrap .buy-pay {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+#mypage-userinfo-check {
+  text-align: center;
+  line-height: 50px;
+  margin-top: 150px;
+}
+
+#mypage-userinfo{
+  padding: 80px;
+}
+
+#mypage-userinfo div{
+  margin-bottom: 20px;
+
+}
+
+#mypage-userinfo label {
+  font-size: 20px;
+  font-weight: 400;
+  display: inline-block;
+  width: 250px;
+}
+#mypage-userinfo input{
+  width: 300px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#mypage-userinfo input[type="submit"]{
+
+  width: 350px;
+  margin-top: 50px;
+  height: 65px;
+  font-size: 25px;
+  background: black;
+  color: white;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+#mypage-userinfo button{
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 80px;
+  height: 28px;
+}
+
+#mypage-userinfo div p{
+  margin-left: 260;
+  color: red ;
+}

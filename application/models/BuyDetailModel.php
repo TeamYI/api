@@ -9,7 +9,7 @@ class BuyDetailModel extends CI_Model{
 
     function insertBuyDetail($data){
 
-        $this->db->insert("buyDetail",$data);
+        $this->db->insert("buydetail",$data);
     }
 
     // function selectLastNoUser(){

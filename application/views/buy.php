@@ -20,7 +20,7 @@
             <li>
                 <?php
                   if(isset($_SESSION["user_id"])){
-                      echo $_SESSION["user_id"] ;
+                      echo $_SESSION["user_id"]."様" ;
                   }else { ?>
                 <a href="login">
                 <?php
@@ -29,13 +29,12 @@
                 ?>
               </a>
             </li>
-            <li><a href="cart">Cart</a></li>
-            <li>
+            <li><a href="cart">CART</a></li>
             <?php
-              if(isset($_SESSION["user_id"])){
-            ?><a href="logout">logout</a></li>
-          <?php } ?>
-
+              if(isset($_SESSION["user_id"])){ ?>
+                <li><a href="mypage">MYPAGE</a></li>
+                <li><a href="logout">LOGOUT</a></li>
+            <?php } ?>
           </ul>
         </div>
         <div id="header-search">
@@ -137,7 +136,7 @@
                   <dd><input type="text" name="post" value="<?php echo $info[0]->postcode ?>"></dd>
                   <dt>都道府県</dt>
                   <dd>
-                    <select name="area" value="<?php echo $info[0]->area ?>">
+                    <select name="area" area-code="<?php echo $info[0]->area_code ?>">
                       <option value="1">愛知県</option>
                       <option value="2">青森県</option>
                       <option value="3">秋田県</option>
