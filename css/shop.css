@@ -186,26 +186,32 @@ header #header-search #header-search-container{
 #login-form {
   margin: 145px 330px;
   /* background: blue; */
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
+  /* border-top: 3px solid black; */
+  border-bottom: 1px solid black;
   width: 540px;
-  height: 230px;
+  height: 310px;
   padding: 50px 0px;
 
 }
 
 #login-top {
-
-  margin-bottom: 30px;
-  font-size: 25px;
-  font-weight: 800;
+  border-bottom: 1px solid black;
+  margin-bottom: 60px;
 }
 #login-top span {
   margin-left: 15px;
 }
 #login-content{
   position: relative;
+}
 
+#login-content div:nth-child(1){
+  text-align: center;
+  font-size: 25px;
+}
+
+#login-content form {
+  margin-top: 40px;
 }
 
 #login-content label {
@@ -223,14 +229,15 @@ header #header-search #header-search-container{
 
 #login-content input[type="button"]{
   position: absolute;
-  top: 0px;
+  top: 70px;
   right: 10px;
-  width: 85px;
-  height: 85px;
+  width: 80px;
+  height: 80px;
   background: black;
   color: white;
   border:0;
   outline: 0;
+  cursor: pointer;
 }
 
 #login-error {
@@ -247,6 +254,40 @@ header #header-search #header-search-container{
   text-align: center;
   text-decoration : underline;
 }
+
+#nouserbuyhis-content div:nth-child(1){
+  text-align: center;
+  font-size: 25px;
+}
+
+#nouserbuyhis-content form {
+  margin-top: 40px;
+}
+
+#nouserbuyhis-content label {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center ;
+  display: inline-block;
+  width: 170px;
+}
+#nouserbuyhis-content input{
+  width: 300px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#nouserbuyhis-content input[type="button"]{
+  width: 500px;
+  height: 50px;
+  background: black;
+  color: white;
+  border:0;
+  outline: 0;
+  cursor: pointer;
+  margin: 30px 20px;
+}
+
 
 /* ------------join---------------------------- */
 

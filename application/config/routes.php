@@ -81,4 +81,8 @@ $route["mypageUserCheck"] = "MypageController/mypageUserCheck";
 $route["userInfoChange"] = "MypageController/userInfoChange";
 
 
+// nouser buyHistory
+$route["nouserBuyhis"] = "BuyController/nouserBuyhis";
+$route["nouserBuyhisCheck"] = "BuyController/nouserBuyhisCheck";
+
 $route["main"] = "MainController" ;

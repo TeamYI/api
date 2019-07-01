@@ -431,6 +431,46 @@ function userJoinCheck(){
 
 }
 
+// login or nouser buyhistory pagechange
+function LoginBuyhistoryChange(page){
+  var loginPage = $("#login-content");
+  var buyhisPage = $("#nouserbuyhis-content");
+
+  loginPage.css("display","none");
+  buyhisPage.css("display","none");
+
+  $("#"+page+"-content").css("display","block");
+}
+
+function nouserBuyhis(){
+  var name = $("input[name='name']").val();
+  var email = $("input[name='email']").val();
+
+  console.log(name);
+  console.log(email);
+
+  $.ajax({
+    url : "nouserBuyhisCheck",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      name : name,
+      email : email
+    },
+    success: function(data){
+
+      $("#nouserbuyhisForm").attr("action", "/shop/nouserBuyhis");
+
+    },
+    error : function(request,status,error){
+      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+
+    }
+  });
+
+}
+
 
 
 //login
@@ -466,6 +506,9 @@ function loginCheck(position){
     }
   })
 }
+
+
+
 // product JS
 function CategoryList(category,name){
   var category_code = category ;

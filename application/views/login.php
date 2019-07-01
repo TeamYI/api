@@ -11,7 +11,7 @@
     <div id="page-container">
       <header id="header">
         <h1 id="logo-wrapper">
-          <a href="" id="logo" title="main page 移動します。">
+          <a href="main" id="logo" title="main page 移動します。">
             <img src="./img/main-logo.png" alt="" width="210px" height="100px">
           </a>
         </h1>
@@ -37,9 +37,11 @@
       <section id="section-main">
         <div id="login-form">
           <div id="login-top">
-            <span>LOGIN</span>
+            <a href="javascript:LoginBuyhistoryChange('login');"><span>LOGIN</span></a>
+            <a href="javascript:LoginBuyhistoryChange('nouserbuyhis');"><span>非会員購入履歴</span></a>
           </div>
-          <div id="login-content">
+          <div id="login-content" style="display:none">
+            <div>LOGIN</div>
             <form class="" action="userlogin" method="post">
               <label for="user_id">ID</label>
               <input type="text" name="user_id">
@@ -53,12 +55,24 @@
               <p>ID・PWが間違います。</p>
             </div>
             <a href="join" id="join-move">
-              <div>
                 <p>新規会員登録</p>
-              </div>
             </a>
           </div>
-        </div>
+          <div id="nouserbuyhis-content" >
+            <div>非会員購入履歴</div>
+            <form class="" action="nouserBuyhis" method="post">
+              <label for="name">お名前</label>
+              <input type="text" name="name">
+              <br>
+              <label for="email">メールアドレス</label>
+              <input type="text" name="email">
+              <br>
+              <input type="button" onclick="nouserBuyhis()" value="検索">
+            </form>
+            <div id="nouserbuyhis-error">
+              <p>ID・PWが間違います。</p>
+            </div>
+          </div>
       </section>
       <footer id="footer">
 

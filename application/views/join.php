@@ -11,7 +11,7 @@
     <div id="page-container">
       <header id="header">
         <h1 id="logo-wrapper">
-          <a href="" id="logo" title="main page 移動します。">
+          <a href="main" id="logo" title="main page 移動します。">
             <img src="./img/main-logo.png" alt="" width="210px" height="100px">
           </a>
         </h1>
