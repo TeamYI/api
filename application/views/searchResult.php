@@ -56,27 +56,13 @@
         </div>
       </header>
       <section id="section-main">
-        <div id="wrap-navi">
-          <div class="sub-logo">
-            <a href="#">
-              <span>カロンカロン</span>
-            </a>
-          </div>
-          <div class="sub-menu">
-            <ul>
-              <li><a href="javascript:CategoryList(0,'商品一覧');">商品一覧</a></li>
-              <li><a href="javascript:CategoryList(1,'マカロン');">マカロン</a></li>
-              <li><a href="javascript:CategoryList(2,'マカロンセット');">マカロンセット</a></li>
-              <li><a href="javascript:CategoryList(3,'デザート');">デザート</a></li>
-            </ul>
-          </div>
-        </div>
-        <div id="wrap-product">
-          <h2>商品一覧</h2>
+        <div id="wrap-search">
+          <h2>検索結果</h2>
           <hr>
           <ul id="product-list">
             <?php
-              foreach ($list as $list) {
+              if($list){
+                foreach ($list as $list) {
             ?>
             <a href="product/<?php echo $list->product_code; ?>">
               <li>
@@ -86,7 +72,9 @@
                   <p><?php echo $list->product_detail; ?></p>
               </li>
             </a>
-            <?php } ?>
+          <?php } }else{ ?>
+              <h2>検索結果がありません.</h2>;
+          <?php } ?>
           </ul>
         </div>
       </section>

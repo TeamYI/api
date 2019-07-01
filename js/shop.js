@@ -27,6 +27,7 @@ $(document).ready(function(){
 
 });
 
+
 //mypage
 function userInfoChangePage(){
   var wrap = $("#wrap-mypage");
@@ -725,25 +726,16 @@ function pageSwitchNB(name){
 
 }
 
-function AA(){
-  var check = $("input[name='check[]']:checked");
-
-  $.ajax({
-    url : "bb",
-    type : "post",
-    data : {
-      // ci_t : csrf_token,
-      check : check
-    },
-    success: function(data){
-      console.log(data);
-    },
-    error : function(request,status,error){
-      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-
-    }
-  });
-
-
+// search
+function searchCheck(){
+  var search = $("input[name='search']");
+  $("#searchForm").attr("action", "/shop/productSearch");
+  if(search.val() == ""){
+    search.focus();
+    alert("製品を書いてください。");
+    return false;
+  }else{
+    $("#searchform").attr("action", "/shop/productSearch");
+    return true;
+  }
 }

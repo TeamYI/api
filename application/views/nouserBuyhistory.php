@@ -40,8 +40,13 @@
 				</ul>
 			</div>
 			<div id="header-search">
-				<span id="search-dt">search</span>
-				<input type="text" id="header-search-container">
+				<form id="searchForm" class="" action="" method="post" onsubmit="return searchCheck();" >
+					<span id="search-label">search</span>
+					<input type="text" id="header-search-container" name="search">
+					<button name="button">
+						<img src="./img/searchIcon.png" alt="">
+					</button>
+				</form>
 			</div>
 			<div id="header-menu">
 				<ul id="header-menu-cate">

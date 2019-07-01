@@ -27,6 +27,19 @@ class ProductModel extends CI_Model{
         return $query->result_array();
     }
 
+    function searchAllProduct($search){
+        $query = $this->db->query("SELECT * FROM product where product_name like '%$search%'");
+
+        return $query->result();
+    }
+
+    function selectNewProduct(){
+        $query = $this->db->query("select * from product order by product_date desc limit 6");
+
+        return $query->result();
+
+    }
+
 
 
 }

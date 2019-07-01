@@ -41,6 +41,13 @@ class ProductController extends CI_Controller{
 
   }
 
+  // search result
+  public function productSearch(){
+    $search = $_POST["search"];
+
+    $data["list"] = $this->ProductModel->searchAllProduct($search);
+    $this->load->view("searchResult",$data);
+  }
 
 }
 

@@ -45,7 +45,24 @@ header #header-search #header-search-container{
   border: none ;
   border-bottom: 1px solid black;
   width: 350px;
+  font-size: 18px;
+  text-align: center;
 }
+#searchForm {
+  /* position: relative; */
+}
+#searchForm button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: white ;
+}
+#searchForm img{
+  width: 20px;
+  height: 20px;
+  top: 2px;
+}
+
 #header-menu {
   border-bottom: solid black 1px;
   position: relative;
@@ -98,9 +115,9 @@ header #header-search #header-search-container{
   height: 550px ;
   /* background: blue; */
 }
-
 .main-medium-text {
   text-align: center;
+  font-size: 35px;
 }
 
 .main-notice {
@@ -155,26 +172,33 @@ header #header-search #header-search-container{
   overflow: hidden;
 }
 
-.main-recommend {
-  width: 240px;
-  height: 290px;
-  border: 1px solid black;
+#product-list{
+  margin: 0 ;
+  padding: 0;
+
+}
+
+
+.main-recommend-list li {
+  width: 295px;
+  height: 300px;
+  /* background: blue; */
   float: left;
-  margin-right: 15px;
+  margin-top: 20px;
+  margin-left : 20px;
+}
+.main-recommend-list img {
+  width: 295px;
+  height: 200px;
+  margin-bottom: 10px;
 }
 
-.main-recommend:last-child {
-  margin-right:  0px;
+.main-recommend-list span {
+  font-size: 16px;
+  font-weight: 900;
 }
 
-.main-recommend-image{
-  height: 250px;
-}
-.main-recommend-image img {
-  width: 240px;
-  height: 240px;
-}
-.main-recommend-text{
+.main-recommend-list p {
   font-size: 12px;
 }
 
@@ -201,7 +225,7 @@ header #header-search #header-search-container{
 #login-top span {
   margin-left: 15px;
   color: rgb(126, 126, 126);
-  cursor: pointer;
+  cursor: pointer;s
 }
 
 #login-top span:nth-child(1) {
@@ -1013,4 +1037,19 @@ header #header-search #header-search-container{
 
 .nouser-buy-name1 {
     font-size: 12px;
+}
+
+/* ---------------search--------------------- */
+
+#wrap-search {
+  margin-top: 80px;
+  /* background: green ; */
+  float: left;
+  width: 100%;
+
+
+}
+
+#wrap-search h2 {
+  margin-left: 40px;
 }
