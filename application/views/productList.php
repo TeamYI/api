@@ -48,10 +48,10 @@
         </div>
         <div id="header-menu">
           <ul id="header-menu-cate">
-            <a href="productList"><li>SHOP</li></a>
+            <a href="/shop/main"><li>TOP</li></a>
+            <a href="/shop/productList"><li>SHOP</li></a>
             <a href=""><li>MAGAZINE</li></a>
-            <a href=""><li>EVENT</li></a>
-            <a href=""><li>NOTICE</li></a>
+            <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
         </div>
       </header>
@@ -84,6 +84,7 @@
                   <span><?php echo $list->product_name; ?></span>
                   <hr>
                   <p><?php echo $list->product_detail; ?></p>
+                  <span><?php echo "¥".$list->product_price; ?></span>
               </li>
             </a>
             <?php } ?>

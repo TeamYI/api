@@ -88,3 +88,11 @@ $route["nouserBuyhis"] = "BuyController/nouserBuyhis";
 $route["nouserBuyhisCheck"] = "BuyController/nouserBuyhisCheck";
 
 $route["main"] = "MainController" ;
+
+//board
+$route["noticeList"] = "BoardController/noticeList" ;
+$route["noticeContent/(:any)"] = "BoardController/noticeContent/$1" ;
+
+
+
+$route["admin"] = "AdminController" ;

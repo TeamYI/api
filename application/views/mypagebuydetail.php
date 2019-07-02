@@ -24,18 +24,18 @@
 								if(isset($_SESSION["user_id"])){
 										echo $_SESSION["user_id"]."様" ;
 								}else { ?>
-							<a href="login">
+							<a href="/shop/login">
 							<?php
 									echo "My Account";
 								}
 							?>
 						</a>
 					</li>
-					<li><a href="cart">CART</a></li>
+					<li><a href="/shop/cart">CART</a></li>
 					<?php
 						if(isset($_SESSION["user_id"])){ ?>
-							<li><a href="mypage">MYPAGE</a></li>
-							<li><a href="logout">LOGOUT</a></li>
+							<li><a href="/shop/mypage">MYPAGE</a></li>
+							<li><a href="/shop/logout">LOGOUT</a></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -44,24 +44,16 @@
 					<span id="search-label">search</span>
 					<input type="text" id="header-search-container" name="search">
 					<button name="button">
-						<img src="./img/searchIcon.png" alt="">
+						<img src="../img/searchIcon.png" alt="">
 					</button>
 				</form>
 			</div>
 			<div id="header-menu">
 				<ul id="header-menu-cate">
-					<a href="productList">
-						<li>SHOP</li>
-					</a>
-					<a href="">
-						<li>MAGAZINE</li>
-					</a>
-					<a href="">
-						<li>EVENT</li>
-					</a>
-					<a href="">
-						<li>NOTICE</li>
-					</a>
+					<a href="/shop/main"><li>TOP</li></a>
+					<a href="/shop/productList"><li>SHOP</li></a>
+					<a href=""><li>MAGAZINE</li></a>
+					<a href="/shop/noticeList"><li>NOTICE</li></a>
 				</ul>
 			</div>
 		</header>
@@ -139,10 +131,9 @@
 							<span><?php echo $pay["sum_pay"] ?></span>
 					</div>
 				</div>
-			</div>
-			<div id="buy-section">
-				<div class="buy-head-title">注文商品</div>
-				<div id="buy-info">
+				<div id="buy-section">
+					<div class="buy-head-title">注文商品</div>
+					<div id="buy-info">
 					<dl>
 						<dt>お名前</dt>
 						<dd>
@@ -188,6 +179,7 @@
 					</dl>
 				</div>
 			</div>
+
 		</section>
 		<footer id="footer">
 

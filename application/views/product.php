@@ -42,16 +42,16 @@
             <span id="search-label">search</span>
             <input type="text" id="header-search-container" name="search">
             <button name="button">
-              <img src="./img/searchIcon.png" alt="">
+              <img src="../img/searchIcon.png" alt="">
             </button>
           </form>
         </div>
         <div id="header-menu">
           <ul id="header-menu-cate">
+            <a href="/shop/main"><li>TOP</li></a>
             <a href="/shop/productList"><li>SHOP</li></a>
             <a href=""><li>MAGAZINE</li></a>
-            <a href=""><li>EVENT</li></a>
-            <a href=""><li>NOTICE</li></a>
+            <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
         </div>
       </header>
@@ -86,13 +86,15 @@
                     <li>カロンカロン</li>
                     <li><?php echo $list->product_name?></li>
                     <li>
-                      <span>가격 : </span>
-                      <span><?php echo $list->product_price ?></span>
+                      <span><?php echo "¥".$list->product_price ?></span>
                     </li>
                     <hr>
                     <li>
-                      <span>수량 </span>
+                      <span>数量</span>
                       <input type="text"  name="amount" value="1">
+                    </li>
+                    <li>
+                      <p>2000円以上買ったら、配送料無料</p>
                     </li>
                     <button id="product-cart" class="product-btn" onclick="CartInsert()" name="">CART</button>
                     <button id="product-buy" class="product-btn" onclick="BuyPageMove()" name="">BUY</button>

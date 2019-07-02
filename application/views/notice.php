@@ -56,9 +56,46 @@
         </div>
       </header>
       <section id="section-main">
-        <div id="buy-finish-wrap">
-          <h1>購入完了しました。</h1>
-        </div>
+          <div class="section-head">
+            <h2>NOTICE</h2>
+            <span>便利な買い物をため、確認お願い致します。</span>
+          </div>
+          <div id="notice-list-wrap">
+                <table>
+                    <colgroup>
+                      <col width="30px">
+                      <col>
+                      <col width="100px">
+                      <col width="120px">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>no</th>
+                        <th>title</th>
+                        <th>作成者</th>
+                        <th>作成日</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($list as $list) {?>
+                                <tr>
+                                  <td>
+                                    <div><?php echo $list["board_code"]; ?></div>
+                                  </td>
+                                  <td>
+                                    <a href="noticeContent/<?php echo $list["board_code"]; ?>"><div><?php echo $list["board_title"]; ?></div></a>
+                                  </td>
+                                  <td>
+                                    <span>カロンカロン</span>
+                                  </td>
+                                  <td>
+                                    <span><?php echo $list["date"] ?></span>
+                                  </td>
+                                </tr>
+                              <?php } ?>
+                    </tbody>
+                  </table>
+              </div>
       </section>
       <footer id="footer">
 

@@ -48,10 +48,10 @@
         </div>
         <div id="header-menu">
           <ul id="header-menu-cate">
-            <a href="productList"><li>SHOP</li></a>
+            <a href="/shop/main"><li>TOP</li></a>
+            <a href="/shop/productList"><li>SHOP</li></a>
             <a href=""><li>MAGAZINE</li></a>
-            <a href=""><li>EVENT</li></a>
-            <a href=""><li>NOTICE</li></a>
+            <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
         </div>
       </header>
@@ -66,104 +66,27 @@
             <h1 class="main-medium-text">
               <a href="javascript:pageSwitchNB('new');" class="main-new active">NEW</a>
             </h1>
-            <ul class="main-recommend-list new-list">
-              <?php
-                if($list){
-                  foreach ($list as $list) {
-              ?>
-              <a href="product/<?php echo $list->product_code; ?>">
-                <li>
-                    <img src="./img/<?php echo $list->product_img; ?>" alt="">
-                    <span><?php echo $list->product_name; ?></span>
-                    <hr>
-                    <p><?php echo $list->product_detail; ?></p>
-                </li>
-              </a>
-            <?php }} ?>
-              <!-- <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-4.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
+            <div>
+              <ul class="main-recommend-list new-list">
+                <?php
+                  if($list){
+                    foreach ($list as $list) {
+                ?>
+                <a href="product/<?php echo $list->product_code; ?>">
+                  <li>
+                      <img src="./img/<?php echo $list->product_img; ?>" alt="">
+                      <span><?php echo $list->product_name; ?></span>
+                      <hr>
+                      <p><?php echo $list->product_detail; ?></p>
+                  </li>
                 </a>
-              </div>
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-3.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div>
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-2.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div>
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-1.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div> -->
-            </ul>
-            <!-- <div class="main-recommend-list best-list" >
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-1.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div>
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-2.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div>
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-3.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div>
-              <div class="main-recommend">
-                <a href="">
-                  <div class="main-recommend-image">
-                    <img src="./img/a-4.png" alt="">
-                  </div>
-                  <div class="main-recommend-text">
-                    <span>새콤달콤한 딸기우유 마카롱</span>
-                  </div>
-                </a>
-              </div>
-            </div> -->
-        </div>
+              <?php }}else{
+                echo "商品がありません。";
+              } ?>
+              </ul>
+              <div class="more"><a href="productList">MORE..</a></div>
+            </div>
+          </div>
         <!-- <div id="main-notice">
           <h3 class="main-medium-text">カロンカロン NOTICE</h3>
           <div id="main-notice-list">

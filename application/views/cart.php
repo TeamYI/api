@@ -48,16 +48,17 @@
         </div>
         <div id="header-menu">
           <ul id="header-menu-cate">
-            <a href="productList"><li>SHOP</li></a>
+            <a href="/shop/main"><li>TOP</li></a>
+            <a href="/shop/productList"><li>SHOP</li></a>
             <a href=""><li>MAGAZINE</li></a>
-            <a href=""><li>EVENT</li></a>
-            <a href=""><li>NOTICE</li></a>
+            <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
         </div>
       </header>
       <section id="section-main">
-          <div id="buy-head">
+          <div class="section-head">
             <h2>ショッピングカート</h2>
+          </div>
             <form id="CartForm" class="" action="" method="post" >
               <div id="buy-product-wrap">
                 <div class="buy-head-title">注文商品</div>
@@ -172,7 +173,6 @@
                 <button  class="cart-btn" onclick="CartProductBuy()">選択した商品購入</button>
               </div>
             </form>
-          </div>
       </section>
       <footer id="footer">
 

@@ -1,3 +1,5 @@
+/* 共通 */
+
 html h1   {
   margin : 0px ;
   padding :0px ;
@@ -13,6 +15,18 @@ a {
   color: black;
   text-decoration: inherit;
 }
+
+
+.section-head {
+  margin-top:  80px ;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.section-head h2 {
+    margin-bottom: 30px;
+}
+
 #page-container{
   margin: 0 15%;
   min-width: 1350px;
@@ -150,7 +164,7 @@ header #header-search #header-search-container{
   margin: 80px 0;
   padding: 20px 78px;
   position: relative;
-  height: 450px;
+  height: 780px;
   /* background: blue; */
 }
 #main-recommend-wrap h3{
@@ -168,15 +182,10 @@ header #header-search #header-search-container{
 }
 .main-recommend-list {
   position : relative;
-  margin-bottom: 90px;
+  margin-bottom: 50px;
   overflow: hidden;
 }
 
-#product-list{
-  margin: 0 ;
-  padding: 0;
-
-}
 
 
 .main-recommend-list li {
@@ -200,6 +209,10 @@ header #header-search #header-search-container{
 
 .main-recommend-list p {
   font-size: 12px;
+}
+
+.more {
+  margin-left: 60px;
 }
 
 .best-list {
@@ -474,7 +487,7 @@ header #header-search #header-search-container{
 
 #product-list li {
   width: 295px;
-  height: 300px;
+  height: 350px;
   /* background: blue; */
   float: left;
   margin-top: 20px;
@@ -579,11 +592,7 @@ header #header-search #header-search-container{
 }
 
 /* -------------------Buy --------------- */
-#buy-product-wrap {
-  margin-top: 55px;
-  border-top: 1px solid #1f1f1f;
 
-}
 #buy-product-wrap table {
     margin-top: 43px;
     text-align: center;
@@ -597,9 +606,6 @@ header #header-search #header-search-container{
     color: rgb(161, 162, 160);
 }
 
-#buy-head h2 {
-    margin-bottom: 30px;
-}
 
 #buy-product-wrap tbody tr td{
     border-bottom: 1px solid #e2e2e2;
@@ -737,13 +743,13 @@ header #header-search #header-search-container{
 }
 
 /*ーーーーーーーーーcartーーーーーーーーーーーー */
-#buy-head {
+#CartForm {
     position: relative;
 }
 #cart-btn-wrap {
     position: absolute;
     right: 0;
-    margin-bottom:  50px;
+    padding-bottom: 50px;
 }
 .cart-btn {
     width: 250px;
@@ -1052,4 +1058,65 @@ header #header-search #header-search-container{
 
 #wrap-search h2 {
   margin-left: 40px;
+}
+
+/* -----------------------admin-----------------  */
+
+#buy-check table{
+  text-align: center;
+}
+
+/*------------------notice------------------  */
+#notice-list-wrap {
+  margin-top: 55px;
+
+}
+#notice-list-wrap table {
+    margin-top: 43px;
+    text-align: center;
+    width: 100%;
+}
+#notice-list-wrap thead th {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(161, 162, 160);
+}
+
+#notice-list-wrap tbody tr td{
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#notice-list-wrap tbody td{
+    padding: 20px 0;
+}
+
+#notice-content-wrap table{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    width: 100%;
+    border: 1px solid #dfdfdf;
+}
+
+#notice-content-wrap table th {
+    width: 122px;
+    padding: 13px 0 12px 0;
+    border-bottom: 1px solid #dfdfdf;
+    background: rgb(248,248,248);
+}
+#notice-content-wrap table td {
+    text-align: left;
+    padding: 13px 0 12px 5px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #dfdfdf;
+
+}
+
+#content-detail {
+    padding: 50px;
+}
+
+#content-detail img {
+    width: 100%
 }

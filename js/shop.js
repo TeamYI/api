@@ -545,6 +545,7 @@ function CategoryList(category,name){
                   +   "<span>"+data[i].product_name+"</span>"
                   +   "<hr>"
                   +   "<p>"+data[i].product_detail+"</p>"
+                  +   "<span>¥"+data[i].product_price+"</span>"
                   +"</li>"
                   +"</a>" ;
 
