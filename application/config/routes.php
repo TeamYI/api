@@ -77,10 +77,14 @@ $route["cart"] = "CartController/cart";
 $route["cartInsert"] = "CartController/cartInsert";
 $route["cartDelete"]= "CartController/cartDelete";
 
+// mypage
 $route["mypage"] = "MypageController/buyHistory";
 $route["buyHistoryDetail/(:any)"] = "MypageController/buyHistoryDetail/$1";
 $route["mypageUserCheck"] = "MypageController/mypageUserCheck";
 $route["userInfoChange"] = "MypageController/userInfoChange";
+$route["buySuccess"] = "MypageController/buySuccess";
+$route["review"] = "MypageController/review";
+$route["reviewWrite"] = "MypageController/reviewWrite";
 
 
 // nouser buyHistory

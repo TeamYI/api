@@ -27,9 +27,25 @@ $(document).ready(function(){
 
 });
 
+// enter key 実行
+function enterkey(name) {
+        if (window.event.keyCode == 13 && name == "login" ) {
+            loginCheck("a");
+        }
+        else if (window.event.keyCode == 13 && name == "search" ) {
+             document.searchForm.submit();
+        }
+        else if (window.event.keyCode == 13 && name == "infoChange" ) {
+             mypagePwCheck();
+        }
+}
+
+
+
 
 //mypage
 function userInfoChangePage(){
+  var infoChange = "infoChange";
   var wrap = $("#wrap-mypage");
   wrap.empty();
 
@@ -481,8 +497,6 @@ function nouserBuyhis(){
 
 //login
 function loginCheck(position){
-  var form_position = position.parentNode;
-  // var csrf_token = $("input[name=csrf_test_name]").val();
   var user_id = $("input[name='user_id']").val();
   var user_pw = $("input[name='user_pw']").val();
 
@@ -543,7 +557,6 @@ function CategoryList(category,name){
                   +"<li>"
                   +   "<img src=./img/"+data[i].product_img+">"
                   +   "<span>"+data[i].product_name+"</span>"
-                  +   "<hr>"
                   +   "<p>"+data[i].product_detail+"</p>"
                   +   "<span>¥"+data[i].product_price+"</span>"
                   +"</li>"
@@ -601,14 +614,16 @@ function checkedSum(){
   total.empty();
   buy_sum.empty();
 
-  buy_sum.attr("value",sum);
+
   sumPosition.append(sum);
 
   if(sum<2000 && sum>0){
     deliPosition.append(deliPay);
+    buy_sum.attr("value",sum+deliPay);
     total.append(sum+deliPay)
   }else{
     deliPosition.append("0");
+    buy_sum.attr("value",sum);
     total.append(sum)
   }
 
@@ -739,4 +754,73 @@ function searchCheck(){
     $("#searchform").attr("action", "/shop/productSearch");
     return true;
   }
+}
+
+
+//mypage user buy seccess
+function buySuccess(code){
+  var buy_code = code+"" ;
+  console.log(typeof(buy_code+""));
+
+  $.ajax({
+    url : "/shop/buySuccess",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      buy_code : buy_code
+    },
+    success: function(data){
+      location.href="/shop/mypage";
+    },
+    error : function(request,status,error){
+
+    }
+  });
+
+}
+
+// review write
+function reviewWindow(name,product_code,buy_code){
+  console.log(name);
+  console.log(name);
+  window.open("/shop/review?product_name="+name+"&product_code="+product_code+"&buy_code="+buy_code, "review", "width=400, height=300, status=1");
+}
+
+function reviewWrite(){
+
+  var product_code = $("input[name='product_code']").val();
+  var content = $("input[name='content']").val();
+  var buy_code = $("input[name='buy_code']").val();
+  var star = $("select[name='star']");
+  var starVal = "1";
+  console.log(content);
+
+  console.log(product_code);
+
+  star.change(function() {
+    starVal = $('option:selected').val();
+    console.log(typeof(starVal));
+  });
+
+  console.log(content);
+console.log(starVal);
+  console.log(buy_code);
+  $.ajax({
+    url : "reviewWrite",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      buy_code : buy_code,
+      product_code : product_code,
+      content : content,
+      star : starVal
+    },
+    success: function(data){
+      // alert("作成が完了しました。");
+      alert(data);
+    },
+    error : function(request,status,error){
+
+    }
+  });
 }

@@ -131,6 +131,9 @@ class BuyController extends CI_Controller{
       // echo "email : ".$email;
       // echo "pay : ".$pay;
       //
+
+      
+
       $data = array(
                   "buy_code"=>$buy_code,
                   "user_name" => $name,
@@ -163,7 +166,7 @@ class BuyController extends CI_Controller{
       $name = $_GET["name"] ;
       $email = $_GET["email"] ;
 
-  
+
       $data["user"] = $name;
       $data["list"]= $this->BuyDetailModel->nouserBuyhis($name,$email);
 

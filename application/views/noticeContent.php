@@ -40,7 +40,7 @@
         <div id="header-search">
           <form id="searchForm" class="" action="" method="post" onsubmit="return searchCheck();" >
             <span id="search-label">search</span>
-            <input type="text" id="header-search-container" name="search">
+            <input type="text" id="header-search-container" name="search" onkeyup="enterkey('search')">
             <button name="button">
               <img src="../img/searchIcon.png" alt="">
             </button>

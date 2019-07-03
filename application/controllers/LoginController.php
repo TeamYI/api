@@ -97,7 +97,9 @@ class LoginController extends CI_Controller{
 
   public function logout(){
       unset($_SESSION["user_id"]) ;
-      $this->load->view("main");
+
+
+      redirect('./main');
   }
 
 }

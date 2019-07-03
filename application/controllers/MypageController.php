@@ -6,6 +6,7 @@ class MypageController extends CI_Controller{
     $this->load->database();
     $this->load->model("BuyModel");
     $this->load->model("UserModel");
+    $this->load->model("ReviewModel");
   }
 
   public function index(){
@@ -48,6 +49,44 @@ class MypageController extends CI_Controller{
 
       $data["address"] = $this->BuyModel->buyHistoryDetAddress($buyCode);
       $this->load->view("mypagebuydetail",$data);
+  }
+
+  public function buySuccess(){
+      $buy_code = $_POST["buy_code"];
+      $user_id = $_SESSION["user_id"] ;
+
+      $check = $this->BuyModel->buySuccess($user_id,$buy_code);
+
+      echo $check;
+
+  }
+  public function review(){
+
+      $product_code = $_GET["product_code"];
+      $product_name = $_GET["product_name"];
+      $buy_code = $_GET["buy_code"];
+
+      $data["product_code"] = $product_code;
+      $data["buy_code"] = $buy_code;
+      $data["name"] = $product_name;
+
+      $this->load->view("reviewWrite",$data);
+  }
+
+  public function reviewWrite(){
+
+      if(isset($_SESSION["user_id"])){
+        $user_id = $_SESSION["user_id"];
+        $content = $_POST["content"];
+        $product_code = $_POST["product_code"];
+        $buy_code = $_POST["buy_code"];
+        $star = $_POST["star"];
+
+        $check = $this->ReviewModel->reviewWrite($user_id,$product_code,$buy_code, $content, $star);
+
+        echo $check ;
+      }
+
   }
 
   public function mypageUserCheck(){

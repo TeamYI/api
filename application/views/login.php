@@ -17,14 +17,14 @@
         </h1>
         <div id="nav-user-menu">
           <ul id="header-nav-actions">
-            <li><a href="login">My Account</a></li>
-            <li><a href="cart">Cart</a></li>
+            <li><a href="/shop/login">My Account</a></li>
+            <li><a href="/shop/cart">CART</a></li>
           </ul>
         </div>
         <div id="header-search">
           <form id="searchForm" class="" action="" method="post" onsubmit="return searchCheck();" >
             <span id="search-label">search</span>
-            <input type="text" id="header-search-container" name="search">
+            <input type="text" id="header-search-container" name="search" onkeyup="enterkey('search')" ;>
             <button name="button">
               <img src="./img/searchIcon.png" alt="">
             </button>
@@ -49,10 +49,10 @@
             <div>LOGIN</div>
             <form class="" action="userlogin" method="post">
               <label for="user_id">ID</label>
-              <input type="text" name="user_id">
+              <input type="text" name="user_id" onkeyup="enterkey('login');">
               <br>
               <label for="user_pw">パスワード</label>
-              <input type="password" name="user_pw">
+              <input type="password" name="user_pw" onkeyup="enterkey('login');">
               <br>
               <input type="button" onclick="loginCheck(this)" value="LOGIN">
             </form>

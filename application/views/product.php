@@ -32,15 +32,15 @@
             <li><a href="/shop/cart">CART</a></li>
             <?php
               if(isset($_SESSION["user_id"])){ ?>
-                <li><a href="mypage">MYPAGE</a></li>
-                <li><a href="logout">LOGOUT</a></li>
+                <li><a href="/shop/mypage">MYPAGE</a></li>
+                <li><a href="/shop/logout">LOGOUT</a></li>
             <?php } ?>
           </ul>
         </div>
         <div id="header-search">
           <form id="searchForm" class="" action="" method="post" onsubmit="return searchCheck();" >
             <span id="search-label">search</span>
-            <input type="text" id="header-search-container" name="search">
+            <input type="text" id="header-search-container" name="search" onkeyup="enterkey('search')">
             <button name="button">
               <img src="../img/searchIcon.png" alt="">
             </button>
@@ -64,10 +64,10 @@
           </div>
           <div class="sub-menu">
             <ul>
-              <li><a href="">商品一覧</a></li>
-              <li><a href="">マカロン</a></li>
-              <li><a href="">マカロンセット</a></li>
-              <li><a href="">デザート</a></li>
+              <li><a href="javascript:CategoryList(0,'商品一覧');">商品一覧</a></li>
+              <li><a href="javascript:CategoryList(1,'マカロン');">マカロン</a></li>
+              <li><a href="javascript:CategoryList(2,'マカロンセット');">マカロンセット</a></li>
+              <li><a href="javascript:CategoryList(3,'デザート');">デザート</a></li>
             </ul>
           </div>
         </div>
@@ -101,6 +101,94 @@
                   </ul>
                 </form>
               </div>
+          </div>
+          <div id="product-section">
+            <div class="tabs">
+              <input id="review" type="radio" name="tab_item" checked>
+              <label class="tab_item" for="review">review</label>
+              <input id="question" type="radio" name="tab_item">
+              <label class="tab_item" for="question">お問い合せ</label>
+              <div class="tab_content" id="review_content">
+                <div class="tab_content_description">
+                  <div>yun様</div>
+                  <div class="">
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                  </div>
+                  <div class="">
+                    <p>afdsfdsfsdfsdfadhfsodfihoshfos</p>
+                  </div>
+                  <div class="review-date">date 2019-08-27</div>
+                </div>
+                <div class="tab_content_description">
+                  <div>yun様</div>
+                  <div class="">
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                  </div>
+                  <div class="">
+                    <p>afdsfdsfsdfsdfadhfsodfihoshfos</p>
+                  </div>
+                  <div class="review-date">date 2019-08-27</div>
+                </div>
+                <div class="tab_content_description">
+                  <div>yun様</div>
+                  <div class="">
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                    <span class="star">
+                      <img src="../img/star.png" alt="">
+                    </span>
+                  </div>
+                  <div class="">
+                    <p>afdsfdsfsdfsdfadhfsodfihoshfos</p>
+                  </div>
+                  <div class="review-date">date 2019-08-27</div>
+                </div>
+              </div>
+              <div class="tab_content" id="question_content">
+                <button type="button" name="button"></button>
+                <div class="tab_content_description">
+                  <p class="c-txtsp">プログラミングの内容がここに入ります</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

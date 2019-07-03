@@ -24,25 +24,25 @@
 								if(isset($_SESSION["user_id"])){
 										echo $_SESSION["user_id"]."様" ;
 								}else { ?>
-							<a href="login">
+							<a href="/shop/login">
 							<?php
 									echo "My Account";
 								}
 							?>
 						</a>
 					</li>
-					<li><a href="cart">CART</a></li>
+					<li><a href="/shop/cart">CART</a></li>
 					<?php
 						if(isset($_SESSION["user_id"])){ ?>
-							<li><a href="mypage">MYPAGE</a></li>
-							<li><a href="logout">LOGOUT</a></li>
+							<li><a href="/shop/mypage">MYPAGE</a></li>
+							<li><a href="/shop/logout">LOGOUT</a></li>
 					<?php } ?>
 				</ul>
 			</div>
 			<div id="header-search">
 				<form id="searchForm" class="" action="" method="post" onsubmit="return searchCheck();" >
 					<span id="search-label">search</span>
-					<input type="text" id="header-search-container" name="search">
+					<input type="text" id="header-search-container" name="search" onkeyup="enterkey('search')">
 					<button name="button">
 						<img src="./img/searchIcon.png" alt="">
 					</button>
@@ -124,7 +124,7 @@
 								 	?></span>
 							</td>
 							<td>
-								<span><?php echo $list["buy_date"] ?></span>
+								<span><?php echo $list["date"] ?></span>
 							</td>
 						</tr>
 						<?php } ?>

@@ -42,7 +42,7 @@
 			<div id="header-search">
 				<form id="searchForm" class="" action="" method="post" onsubmit="return searchCheck();" >
 					<span id="search-label">search</span>
-					<input type="text" id="header-search-container" name="search">
+					<input type="text" id="header-search-container" name="search" onkeyup="enterkey('search')">
 					<button name="button">
 						<img src="../img/searchIcon.png" alt="">
 					</button>
@@ -73,6 +73,11 @@
 						<span style="background:green;" >入金完了</span>
 					<?php } ?>
 					</div>
+					<div>
+					<?php if(($address->success)=="O"){  ?>
+						<h3>購入完了</h3>
+					<?php } ?>
+					</div>
 				</div>
 				<div class="buy-head-title">注文商品</div>
 				<table>
@@ -101,6 +106,11 @@
 							<td>
 								<div>カロンカロン</div>
 								<div><?php echo $product["product_name"] ?></div>
+									<?php if(($address->success)=="O"){  ?>
+										<div>
+											<button type="button" name="button" class="button" onclick="reviewWindow('<?php echo $product["product_name"] ?>','<?php echo $product["product_code"] ?>','<?php echo $address->buy_code ?>')">review作成</button>
+										<div>
+									<?php } ?>
 							</td>
 							<td>
 								<span><?php echo $product["product_price"] ?></span>
@@ -178,6 +188,11 @@
 						</dd>
 					</dl>
 				</div>
+				<?php if(($address->success)==null && ($address->payment_check)=="O"){  ?>
+					<div>
+						<button type="button" name="button" onclick="buySuccess(<?php echo $address->buy_code; ?>)">購入確定</button>
+					<div>
+				<?php } ?>
 			</div>
 
 		</section>
