@@ -87,9 +87,11 @@ $route["review"] = "MypageController/review";
 $route["reviewWrite"] = "MypageController/reviewWrite";
 
 
+
 // nouser buyHistory
 $route["nouserBuyhis"] = "BuyController/nouserBuyhis";
 $route["nouserBuyhisCheck"] = "BuyController/nouserBuyhisCheck";
+$route["nouserBuyHisDetail/(:any)"] = "BuyController/nouserBuyHisDetail/$1";
 
 $route["main"] = "MainController" ;
 

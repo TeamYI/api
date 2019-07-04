@@ -6,6 +6,7 @@ class ProductController extends CI_Controller{
     parent::__construct();
     $this->load->database();
     $this->load->model("ProductModel");
+    $this->load->model("ReviewModel");
   }
 
   public function index(){
@@ -21,7 +22,7 @@ class ProductController extends CI_Controller{
       // echo "product : ".$code;
 
       $data["list"] = $this->ProductModel->selectProduct($code);
-
+      $data["review"] = $this->ReviewModel->reviewProduct($code);
       // echo print_r($data["list"]);
       $this->load->view("product",$data);
       // redirect(base_url("product"));

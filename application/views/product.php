@@ -50,7 +50,7 @@
           <ul id="header-menu-cate">
             <a href="/shop/main"><li>TOP</li></a>
             <a href="/shop/productList"><li>SHOP</li></a>
-            <a href=""><li>MAGAZINE</li></a>
+            <a href="#"><li>MAGAZINE</li></a>
             <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
         </div>
@@ -106,88 +106,36 @@
             <div class="tabs">
               <input id="review" type="radio" name="tab_item" checked>
               <label class="tab_item" for="review">review</label>
-              <input id="question" type="radio" name="tab_item">
-              <label class="tab_item" for="question">お問い合せ</label>
+              <!-- <input id="question" type="radio" name="tab_item">
+              <label class="tab_item" for="question">お問い合せ</label> -->
               <div class="tab_content" id="review_content">
+                <?php if($review){  ?>
+                  <?php foreach($review as $review){  ?>
                 <div class="tab_content_description">
-                  <div>yun様</div>
+                  <div><?php echo $review["user_name"] ?></div>
                   <div class="">
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
+                    <?php for($i=0; $i<$review["grade"] ; $i++){  ?>
+                      <span class="star">
+                        <img src="../img/star.png" alt="">
+                      </span>
+                    <?php } ?>
                   </div>
                   <div class="">
-                    <p>afdsfdsfsdfsdfadhfsodfihoshfos</p>
+                    <p><?php echo $review["review_content"] ?></p>
                   </div>
-                  <div class="review-date">date 2019-08-27</div>
+                  <div class="review-date"><?php echo $review["date"] ?></div>
                 </div>
-                <div class="tab_content_description">
-                  <div>yun様</div>
-                  <div class="">
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                  </div>
-                  <div class="">
-                    <p>afdsfdsfsdfsdfadhfsodfihoshfos</p>
-                  </div>
-                  <div class="review-date">date 2019-08-27</div>
-                </div>
-                <div class="tab_content_description">
-                  <div>yun様</div>
-                  <div class="">
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                    <span class="star">
-                      <img src="../img/star.png" alt="">
-                    </span>
-                  </div>
-                  <div class="">
-                    <p>afdsfdsfsdfsdfadhfsodfihoshfos</p>
-                  </div>
-                  <div class="review-date">date 2019-08-27</div>
-                </div>
+                  <?php } ?>
+                <?php }else{ ?>
+                    <h2>reviewがありません。</h2>
+                <?php } ?>
               </div>
-              <div class="tab_content" id="question_content">
+              <!-- <div class="tab_content" id="question_content">
                 <button type="button" name="button"></button>
                 <div class="tab_content_description">
                   <p class="c-txtsp">プログラミングの内容がここに入ります</p>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

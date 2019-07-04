@@ -34,7 +34,7 @@ class BuyModel extends CI_Model{
         $query = $this->db->query("select a.product_code ,b.product_img , b.product_name, b.product_price , a.product_amount, a.product_amount*b.product_price as sum_price
                                    from buy as a join product as b
                                    on a.product_code = b.product_code
-                                   where buy_code = '$buyCode'");
+                                   where buy_code = '$buyCode' order by product_code ;");
 
         return $query->result_array();
     }

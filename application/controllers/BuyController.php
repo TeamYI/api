@@ -9,6 +9,7 @@ class BuyController extends CI_Controller{
     $this->load->model("BuyModel");
     $this->load->model("CartModel");
     $this->load->model("UserModel");
+    $this->load->model("ReviewModel");
   }
 
   public function index(){
@@ -132,7 +133,7 @@ class BuyController extends CI_Controller{
       // echo "pay : ".$pay;
       //
 
-      
+
 
       $data = array(
                   "buy_code"=>$buy_code,
@@ -173,6 +174,37 @@ class BuyController extends CI_Controller{
       $this->load->view("nouserBuyhistory",$data);
 
 
+  }
+
+  public function nouserBuyHisDetail($buyCode){
+
+      $delivery_pay = 0;
+      $buy_pay = 0;
+      $sum_pay = 0 ;
+
+      $data["product"] = $this->BuyModel->buyHistoryDetPro($buyCode);
+
+      for($i=0 ; $i<count($data["product"]); $i++){
+            $array = $data["product"][$i] ;
+            $buy_pay +=$array["sum_price"];
+      }
+
+      if($buy_pay>2000){
+        $delivery_pay = 0 ;
+        $sum_pay = $buy_pay + $delivery_pay ;
+      }else{
+        $delivery_pay = 250;
+      }
+
+      $data["pay"]["buy_pay"] = $buy_pay ;
+      $data["pay"]["delivery_pay"] = $delivery_pay ;
+      $data["pay"]["sum_pay"] = $buy_pay + $delivery_pay ;
+
+      $data["address"] = $this->BuyModel->buyHistoryDetAddress($buyCode);
+      $data["review"] = $this->ReviewModel->reviewCheck($buyCode);
+      $data["count"] = 0;
+
+      $this->load->view("nouserBuyHisDetail",$data);
   }
 
   public function nouserBuyhisCheck(){

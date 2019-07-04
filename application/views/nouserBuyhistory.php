@@ -52,7 +52,7 @@
 				<ul id="header-menu-cate">
 					<a href="/shop/main"><li>TOP</li></a>
 					<a href="/shop/productList"><li>SHOP</li></a>
-					<a href=""><li>MAGAZINE</li></a>
+					<a href="#"><li>MAGAZINE</li></a>
 					<a href="/shop/noticeList"><li>NOTICE</li></a>
 				</ul>
 			</div>
@@ -83,7 +83,7 @@
 						<?php foreach($list as $list){ ?>
 						<tr>
 							<td>
-								<a href="buyHistoryDetail/<?php echo $list["buy_code"] ?>" class="buy-code">
+								<a href="nouserBuyHisDetail/<?php echo $list["buy_code"] ?>" class="buy-code">
 									<?php echo $list["buy_code"] ?>
 								</a>
 							</td>

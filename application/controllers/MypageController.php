@@ -25,30 +25,36 @@ class MypageController extends CI_Controller{
 
   public function buyHistoryDetail($buyCode){
 
-      $delivery_pay = 0;
-      $buy_pay = 0;
-      $sum_pay = 0 ;
+      if(isset($_SESSION["user_id"])){
 
-      $data["product"] = $this->BuyModel->buyHistoryDetPro($buyCode);
+        $delivery_pay = 0;
+        $buy_pay = 0;
+        $sum_pay = 0 ;
 
-      for($i=0 ; $i<count($data["product"]); $i++){
-            $array = $data["product"][$i] ;
-            $buy_pay +=$array["sum_price"];
-      }
+        $data["product"] = $this->BuyModel->buyHistoryDetPro($buyCode);
 
-      if($buy_pay>2000){
-        $delivery_pay = 0 ;
-        $sum_pay = $buy_pay + $delivery_pay ;
-      }else{
-        $delivery_pay = 250;
-      }
+        for($i=0 ; $i<count($data["product"]); $i++){
+              $array = $data["product"][$i] ;
+              $buy_pay +=$array["sum_price"];
+        }
 
-      $data["pay"]["buy_pay"] = $buy_pay ;
-      $data["pay"]["delivery_pay"] = $delivery_pay ;
-      $data["pay"]["sum_pay"] = $buy_pay + $delivery_pay ;
+        if($buy_pay>2000){
+          $delivery_pay = 0 ;
+          $sum_pay = $buy_pay + $delivery_pay ;
+        }else{
+          $delivery_pay = 250;
+        }
 
-      $data["address"] = $this->BuyModel->buyHistoryDetAddress($buyCode);
-      $this->load->view("mypagebuydetail",$data);
+        $data["pay"]["buy_pay"] = $buy_pay ;
+        $data["pay"]["delivery_pay"] = $delivery_pay ;
+        $data["pay"]["sum_pay"] = $buy_pay + $delivery_pay ;
+
+        $data["address"] = $this->BuyModel->buyHistoryDetAddress($buyCode);
+        $data["review"] = $this->ReviewModel->reviewCheck($buyCode);
+        $data["count"] = 0;
+
+        $this->load->view("mypagebuydetail",$data);
+    }
   }
 
   public function buySuccess(){
@@ -75,7 +81,7 @@ class MypageController extends CI_Controller{
 
   public function reviewWrite(){
 
-      if(isset($_SESSION["user_id"])){
+
         $user_id = $_SESSION["user_id"];
         $content = $_POST["content"];
         $product_code = $_POST["product_code"];
@@ -85,7 +91,7 @@ class MypageController extends CI_Controller{
         $check = $this->ReviewModel->reviewWrite($user_id,$product_code,$buy_code, $content, $star);
 
         echo $check ;
-      }
+      
 
   }
 

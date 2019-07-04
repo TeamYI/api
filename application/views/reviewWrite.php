@@ -29,6 +29,10 @@
       <div class="">review</div>
       <input type="text" name="content" value="" style="width:380px; height:120px">
     </div>
+		<?php if(isset($_SESSION["user_id"])){  ?>
     <button name="button" type="button" onclick="reviewWrite()">作成</button>
+	<?php }else{  ?>
+		<button name="button" type="button" onclick="nouserReviewWrite()">作成</button>
+	<?php  } ?>
 </body>
 </html>

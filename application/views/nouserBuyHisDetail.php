@@ -203,7 +203,7 @@
 				</div>
 				<?php if(($address->success)==null && ($address->payment_check)=="O"){  ?>
 					<div>
-						<button type="button" name="button" onclick="buySuccess(<?php echo $address->buy_code; ?>)">購入確定</button>
+						<button type="button" name="button" onclick="nouserbuySuccess('<?php echo $address->buy_code ?>', '<?php echo $address->user_name ?>', '<?php echo $address->email ?>')">購入確定</button>
 					<div>
 				<?php } ?>
 			</div>

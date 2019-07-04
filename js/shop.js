@@ -5,6 +5,7 @@ var slideCount = 0 ;
 //current position
 var curr_position ;
 var joinIdCheck = 0 ;
+var starVal = "1";
 
 $(document).ready(function(){
 
@@ -24,6 +25,13 @@ $(document).ready(function(){
 
     area_select();
 
+
+    var star = $("select[name='star']");
+
+    star.change(function() {
+      starVal = $('option:selected').val();
+      console.log(typeof(starVal));
+    });
 
 });
 
@@ -240,38 +248,49 @@ function userInfoChange(){
   if(pw.val() == ""){
     alert("パスワード入力してください");
     pw.focus();
+    return false;
   }else if(rpw.val() == ""){
     alert("確認のためもう一度入力してください");
     rpw.focus();
+    return false;
   }else if(rpw.val() != pw.val()){
     console.log(rpw.val());
     console.log(pw.val());
     alert("確認のためもう一度入力してください");
     rpw.focus();
+    return false;
   }else if(email.val() == ""){
     alert("メールアドレス入力してください");
     email.focus();
+    return false;
   }else if(name.val() == ""){
     alert("お名前入力してください");
     name.focus();
+    return false;
   }else if(post.val() == ""){
     alert("郵便番号入力してください");
     post.focus();
+    return false;
   }else if(area.val() == ""){
     alert("都道府県入力してください");
     area.focus();
+    return false;
   }else if(city.val() == ""){
     alert("市区郡入力してください");
     city.focus();
+    return false;
   }else if(addr1.val() == ""){
     alert("町村字入力してください");
     addr1.focus();
+    return false;
   }else if(addr2.val() == ""){
     alert("番地入力してください");
     addr2.focus();
+    return false;
   }else if(tel.val() == ""){
     alert("お電話番号入力してください");
     tel.focus();
+    return false;
   }
 
 
@@ -755,9 +774,6 @@ function searchCheck(){
     return true;
   }
 }
-
-
-//mypage user buy seccess
 function buySuccess(code){
   var buy_code = code+"" ;
   console.log(typeof(buy_code+""));
@@ -779,6 +795,29 @@ function buySuccess(code){
 
 }
 
+//mypage user buy seccess
+function nouserbuySuccess(code,name,email){
+  var buy_code = code+"" ;
+
+  console.log(typeof(buy_code+""));
+
+  $.ajax({
+    url : "/shop/buySuccess",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      buy_code : buy_code
+    },
+    success: function(data){
+      location.href="/shop/nouserBuyhis?name="+name+"&email="+email;
+    },
+    error : function(request,status,error){
+
+    }
+  });
+
+}
+
 // review write
 function reviewWindow(name,product_code,buy_code){
   console.log(name);
@@ -786,24 +825,16 @@ function reviewWindow(name,product_code,buy_code){
   window.open("/shop/review?product_name="+name+"&product_code="+product_code+"&buy_code="+buy_code, "review", "width=400, height=300, status=1");
 }
 
+
 function reviewWrite(){
 
   var product_code = $("input[name='product_code']").val();
   var content = $("input[name='content']").val();
   var buy_code = $("input[name='buy_code']").val();
-  var star = $("select[name='star']");
-  var starVal = "1";
-  console.log(content);
 
-  console.log(product_code);
-
-  star.change(function() {
-    starVal = $('option:selected').val();
-    console.log(typeof(starVal));
-  });
 
   console.log(content);
-console.log(starVal);
+  console.log(starVal);
   console.log(buy_code);
   $.ajax({
     url : "reviewWrite",
@@ -816,8 +847,42 @@ console.log(starVal);
       star : starVal
     },
     success: function(data){
-      // alert("作成が完了しました。");
-      alert(data);
+      alert("作成が完了しました。");
+      // location.href="/shop/mypage";
+      opener.parent.location="/shop/buyHistoryDetail/"+buy_code;
+      window.close();
+    },
+    error : function(request,status,error){
+
+    }
+  });
+}
+
+function nouserReviewWrite(){
+
+  var product_code = $("input[name='product_code']").val();
+  var content = $("input[name='content']").val();
+  var buy_code = $("input[name='buy_code']").val();
+
+
+  console.log("no :" + content);
+  console.log(starVal);
+  console.log(buy_code);
+  $.ajax({
+    url : "reviewWrite",
+    type : "post",
+    data : {
+      // ci_t : csrf_token,
+      buy_code : buy_code,
+      product_code : product_code,
+      content : content,
+      star : starVal
+    },
+    success: function(data){
+      alert("作成が完了しました。");
+      // location.href="/shop/mypage";
+      opener.parent.location="/shop/nouserBuyHisDetail/"+buy_code;
+      window.close();
     },
     error : function(request,status,error){
 
