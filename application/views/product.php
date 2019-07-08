@@ -49,7 +49,7 @@
         <div id="header-menu">
           <ul id="header-menu-cate">
             <a href="/shop/main"><li>TOP</li></a>
-            <a href="/shop/productList"><li>SHOP</li></a>
+            <a href="/shop/categoryList/0"><li>SHOP</li></a>
             <a href="#"><li>MAGAZINE</li></a>
             <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
@@ -64,10 +64,10 @@
           </div>
           <div class="sub-menu">
             <ul>
-              <li><a href="javascript:CategoryList(0,'商品一覧');">商品一覧</a></li>
-              <li><a href="javascript:CategoryList(1,'マカロン');">マカロン</a></li>
-              <li><a href="javascript:CategoryList(2,'マカロンセット');">マカロンセット</a></li>
-              <li><a href="javascript:CategoryList(3,'デザート');">デザート</a></li>
+              <li><a href="/shop/categoryList/0">商品一覧</a></li>
+              <li><a href="/shop/categoryList/1">マカロン</a></li>
+              <li><a href="/shop/categoryList/2">マカロンセット</a></li>
+              <li><a href="/shop/categoryList/3">デザート</a></li>
             </ul>
           </div>
         </div>

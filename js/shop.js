@@ -548,60 +548,18 @@ function loginCheck(position){
 
 
 
-// product JS
-function CategoryList(category,name){
-  var category_code = category ;
-  var category_name = name ;
-  var list_p = $("#product-list") ;
-  var list_title = $("#wrap-product h2");
-  $.ajax({
-    url : "categoryList",
-    type : "post",
-    data : {
-      category_code : category_code
-    },
-    dataType : "json",
-    success: function(data){
-      list_p.empty();
-      list_title.empty();
-
-      list_title.append(category_name);
-
-      var text = "";
-
-      console.log("aa :" + data.length);
-      if(data.length){
-        for(var i=0 ; i<data.length ; i++){
-          text =  "<a href='product/"+data[i].product_code+"'>"
-                  +"<li>"
-                  +   "<img src=./img/"+data[i].product_img+">"
-                  +   "<span>"+data[i].product_name+"</span>"
-                  +   "<p>"+data[i].product_detail+"</p>"
-                  +   "<span>¥"+data[i].product_price+"</span>"
-                  +"</li>"
-                  +"</a>" ;
-
-          list_p.append(text);
-        }
-      }else {
-        text = "<h2>商品がありません</h2>";
-        list_p.append(text);
-
-      }
-
-    },
-    error : function(request,status,error){
-      console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-
-    }
-  })
-}
 
 
 function CartInsert(){
+  var amount = $("input[name='amount']").val();
 
-  $("#BuyPageMove").attr("action", "/shop/cartInsert");
+  if(amount > 0){
+      $("#BuyPageMove").attr("action", "/shop/cartInsert");
+  }else{
+    alert("商品は１個以上購入ができます。");
+  }
+
+
 
 }
 // cart페이지 계산 처리 역할
@@ -659,7 +617,13 @@ function CartProductRemove(){
 }
 
 function CartProductBuy(){
-  $("#CartForm").attr("action", "/shop/buyPageMove");
+  var checkbox = $("input[type='checkbox']:checked");
+
+  if(checkbox.val()){
+    $("#CartForm").attr("action", "/shop/buyPageMove");
+  }else{
+    alert("選択した商品がありません。");
+  }
 }
 
 //product BUY

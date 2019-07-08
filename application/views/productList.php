@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>example shop</title>
-    <link rel="stylesheet" href="./css/shop.css">
-    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="./js/shop.js"></script>
+    <link rel="stylesheet" href="../css/shop.css">
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/shop.js"></script>
   </head>
   <body>
     <div id="page-container">
       <header id="header">
         <h1 id="logo-wrapper">
           <a href="main" id="logo" title="main page 移動します。">
-            <img src="./img/main-logo.png" alt="" width="210px" height="100px">
+            <img src="../img/main-logo.png" alt="" width="210px" height="100px">
           </a>
         </h1>
         <div id="nav-user-menu">
@@ -42,14 +42,14 @@
             <span id="search-label">search</span>
             <input type="text" id="header-search-container" name="search" onkeyup="enterkey('search')">
             <button name="button">
-              <img src="./img/searchIcon.png" alt="">
+              <img src="../img/searchIcon.png" alt="">
             </button>
           </form>
         </div>
         <div id="header-menu">
           <ul id="header-menu-cate">
             <a href="/shop/main"><li>TOP</li></a>
-            <a href="/shop/productList"><li>SHOP</li></a>
+            <a href="/shop/categoryList/0"><li>SHOP</li></a>
             <a href="#"><li>MAGAZINE</li></a>
             <a href="/shop/noticeList"><li>NOTICE</li></a>
           </ul>
@@ -64,26 +64,26 @@
           </div>
           <div class="sub-menu">
             <ul>
-              <li><a href="javascript:CategoryList(0,'商品一覧');">商品一覧</a></li>
-              <li><a href="javascript:CategoryList(1,'マカロン');">マカロン</a></li>
-              <li><a href="javascript:CategoryList(2,'マカロンセット');">マカロンセット</a></li>
-              <li><a href="javascript:CategoryList(3,'デザート');">デザート</a></li>
+              <li><a href="/shop/categoryList/0">商品一覧</a></li>
+              <li><a href="/shop/categoryList/1">マカロン</a></li>
+              <li><a href="/shop/categoryList/2">マカロンセット</a></li>
+              <li><a href="/shop/categoryList/3">デザート</a></li>
             </ul>
           </div>
         </div>
         <div id="wrap-product">
-          <h2>商品一覧</h2>
+          <h2><?php echo $category_name ?></h2>
           <hr>
           <ul id="product-list">
             <?php
               foreach ($list as $list) {
             ?>
-            <a href="product/<?php echo $list->product_code; ?>">
+            <a href="/shop/product/<?php echo $list["product_code"]; ?>">
               <li>
-                  <img src="./img/<?php echo $list->product_img; ?>" alt="">
-                  <span><?php echo $list->product_name; ?></span>
-                  <p><?php echo $list->product_detail; ?></p>
-                  <span><?php echo "¥".$list->product_price; ?></span>
+                  <img src="../img/<?php echo $list["product_img"]; ?>" alt="">
+                  <span><?php echo $list["product_name"]; ?></span>
+                  <p><?php echo $list["product_detail"]; ?></p>
+                  <span><?php echo "¥".$list["product_price"]; ?></span>
               </li>
             </a>
             <?php } ?>
