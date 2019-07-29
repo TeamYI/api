@@ -50,55 +50,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route["aa"] = "LoginController/aa" ;
-$route["bb"] = "LoginController/bb" ;
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
-
-$route["login"] = "LoginController" ;
-$route["join"] = "LoginController/join" ;
-$route["userJoin"] = "LoginController/userJoin" ;
-$route["userCheck"] = "LoginController/userCheck" ;
-$route["userlogin"] = "LoginController/userLogin" ;
-$route["logout"] = "LoginController/logout";
-
-$route["productList"] = "ProductController";
-$route["categoryList/(:any)"] = "ProductController/categoryList/$1";
-$route["product/(:any)"] = "ProductController/product/$1";
-// search
-$route["productSearch"] = "ProductController/productSearch";
-
-$route["buyPageMove"] = "BuyController/buyPageMove";
-$route["buy"] = "BuyController/buy";
-$route["buyComplete"] = "BuyController/buyComplete";
-
-$route["cart"] = "CartController/cart";
-$route["cartInsert"] = "CartController/cartInsert";
-$route["cartDelete"]= "CartController/cartDelete";
-
-// mypage
-$route["mypage"] = "MypageController/buyHistory";
-$route["buyHistoryDetail/(:any)"] = "MypageController/buyHistoryDetail/$1";
-$route["mypageUserCheck"] = "MypageController/mypageUserCheck";
-$route["userInfoChange"] = "MypageController/userInfoChange";
-$route["buySuccess"] = "MypageController/buySuccess";
-$route["review"] = "MypageController/review";
-$route["reviewWrite"] = "MypageController/reviewWrite";
 
 
 
-// nouser buyHistory
-$route["nouserBuyhis"] = "BuyController/nouserBuyhis";
-$route["nouserBuyhisCheck"] = "BuyController/nouserBuyhisCheck";
-$route["nouserBuyHisDetail/(:any)"] = "BuyController/nouserBuyHisDetail/$1";
+$route["test"] = "TestController" ;
 
-$route["main"] = "MainController" ;
+$route["productList"] = "ProductController" ;
+$route["productSearch"] = "ProductController/ProductSearchResult" ;
+$route["product/(:any)"] = "ProductController/Product/$1" ;
 
-//board
-$route["noticeList"] = "BoardController/noticeList" ;
-$route["noticeContent/(:any)"] = "BoardController/noticeContent/$1" ;
-
-
-
-$route["admin"] = "AdminController" ;
+$route["productCodeCheck"] = "productRegisterController/productCodeCheck" ;
+$route["productRegisterPage"] = "productRegisterController" ;
+$route["productRegister"] = "productRegisterController/productRegister" ;
+$route["productCategoryAdd"] = "productRegisterController/productCategoryAdd" ;
+$route["productImageSelect"] = "productRegisterController/productImageSelect" ;
