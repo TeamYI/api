@@ -64,3 +64,10 @@ $route["productRegisterPage"] = "productRegisterController" ;
 $route["productRegister"] = "productRegisterController/productRegister" ;
 $route["productCategoryAdd"] = "productRegisterController/productCategoryAdd" ;
 $route["productImageSelect"] = "productRegisterController/productImageSelect" ;
+
+$route["productRegisterSuccess/(:any)"] = "productRegisterController/productRegisterSuccess/$1" ;
+$route["productStockPage"] = "productRegisterController/productStockPage" ;
+$route["productStockSet"] = "productRegisterController/productStockSet" ;
+$route["productVariationPage"] = "productRegisterController/productVariationPage" ;
+$route["productVariationSet"] = "productRegisterController/productVariationSet" ;
+

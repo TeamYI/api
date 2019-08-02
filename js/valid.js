@@ -305,3 +305,219 @@ function DeliveryPreValid(text){
 
   return check ;
 }
+
+
+function validStockCheck(){
+  var element = $(".valid");
+  var quantity = "";
+  var type = $("input[name=type]");
+
+  for(var i=0; i<element.length; i++){
+    var check = false;
+    var text = element[i].value;
+    var role = element[i].getAttribute("name") ;
+// console.log(element[i].classList.contains("quantity"));
+// return false;
+    if(role == "quantity"  || element[i].classList.contains("quantity") ){
+      check = StockValid(text,"quantity");
+      if(check==false){
+        element[i].focus();
+        alert("0~9999 or 無制限である場合は「ｚ」を入力してください。");
+        return check;
+      }else{
+        quantity = text;
+      }
+    }else if(role == "alert_threshold"|| element[i].classList.contains("alert_threshold")){
+      check = StockValid(text,"alert_threshold");
+      if(check==false){
+        element[i].focus();
+        alert("0~9999を入力してください。");
+        return check;
+      }
+    }
+  }
+
+
+  if(type.val()=="Item"){
+    if(quantity == "z" ||  quantity == "Z"){
+      quantity = "無制限";
+    }
+  }else{
+    quantity = "バリエーションごと";
+  }
+
+  $("#productStock", opener.document).empty();
+  $("#productStock", opener.document).append(quantity);
+  window.close();
+}
+
+function StockValid(text,role){
+  var pattern = /^[0-9]+$/; // 数
+  var pattern1 = /^[zZ]+$/ ;
+  var check = false;
+  console.log( pattern1.test(text) );
+  if(role == "quantity"){
+    if(pattern.test(text) &&  (text >= 0) && (text<=9999) || pattern1.test(text) ){
+      check = true;
+    }
+  }else{
+    if(pattern.test(text) &&  (text >= 0) && (text<=9999) ){
+      check = true;
+    }
+  }
+
+  return check;
+}
+
+function validShow(){
+  var count = 0;
+  $(".titleCheck").each(function(){
+
+    count++;
+    if(count==1){
+      if($(".selectOne option").length>0 || $(this).val() != "" ){
+        $(this).addClass("valid");
+      }else{
+        $(this).removeClass("valid");
+      }
+    }else if(count==2){
+      if($(".selectTwo option").length>0 || $(this).val() != ""){
+        $(this).addClass("valid");
+      }else{
+        $(this).removeClass("valid");
+      }
+    }else if(count==3){
+      if($(".selectThree option").length>0 || $(this).val() != ""){
+        $(this).addClass("valid");
+      }else{
+        $(this).removeClass("valid");
+      }
+    }
+
+  });
+
+  console.log($(".selectOne option").length);
+
+
+}
+
+
+
+function validVariationCheck(){
+  // validSelectShow();
+  validShow();
+
+  var element = $(".valid");
+  var quantity = "";
+
+  for(var i=0; i<element.length; i++){
+
+    var check = false;
+    var count = 0;
+    var text = element[i].value;
+    var role = element[i].getAttribute("name") ;
+
+    if(i==0){
+      if(text == "" ){
+        element[i].focus();
+        alert("項目名を入力してください。");
+        return false;
+      }else if( role != "title1"){
+        alert("1つ目の項目を先に入力してください。");
+        return false;
+      }else{
+        check = VariationNameValid(text);
+        if(check == false){
+          element[i].focus();
+          alert("環境依存,余白を入力できません。");
+          return false;
+        }else{
+          $(".selectOne option").each(function() {
+            count++;
+          });
+        }
+      }
+    }else if(i==1){
+      if(text == "" ){
+        element[i].focus();
+        alert("項目名を入力してください。");
+        return false;
+      }else if( role != "title2"){
+        alert("2つ目の項目を先に入力してください。");
+        return false;
+      }else{
+        check = VariationNameValid(text);
+        if(check == false){
+          element[i].focus();
+          alert("環境依存,余白を入力できません。");
+          return false;
+        }else{
+          $(".selectTwo option").each(function() {
+            count++;
+          });
+        }
+      }
+    }else if(i==2){
+      if(text == ""){
+        element[i].focus();
+        alert("項目名を入力してください。");
+        return false;
+      }else{
+        check = VariationNameValid(text);
+        if(check == false){
+          element[i].focus();
+          alert("環境依存,余白を入力できません。");
+          return false;
+        }else{
+          $(".selectThree option").each(function() {
+            count++;
+          });
+        }
+      }
+    }
+    console.log(count);
+    if(count == 0){
+      alert("variationを追加してください。");
+      return false;
+    }
+  }
+
+  $(".selectOne option").each(function() {
+    $(this).prop("selected","true");
+  });
+  $(".selectTwo option").each(function() {
+    $(this).prop("selected","true");
+  });
+  $(".selectThree option").each(function() {
+    $(this).prop("selected","true");
+  });
+
+  $("#productStock", opener.document).empty();
+  $("#productStock", opener.document).append("バリエーションごと");
+
+  window.close();
+}
+
+function VariationNameValid(text){
+  var check = false;
+
+  var pattern = /^[\s]+$/ ;
+
+  var unicodeArray = str2Array(text);
+  var euc = Encoding.convert(unicodeArray, 'EUCJP', "AUTO");
+  var unicode = Encoding.convert (euc,  'UNICODE' ,  'AUTO' );
+  var unicodeString = Encoding.codeToString(unicode);
+
+  console.log(unicodeString);
+  console.log(unicodeString == text);
+  console.log(pattern.test(text));
+  if(text == unicodeString && !pattern.test(text)){
+      check = true ;
+  }else{
+    check = false;
+  }
+
+
+  return check ;
+}
+

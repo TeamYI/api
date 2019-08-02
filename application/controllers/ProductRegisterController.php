@@ -29,7 +29,36 @@ class ProductRegisterController extends CI_Controller{
     echo $result;
   }
 
+  public function productRegisterSuccess($product_code){
+    $data["product_code"] = $product_code;
+    $result = $this->productStockGET($product_code);
+    $data["stock"]  = $result->stock ;
+
+    $this->load->view("productRegisterSuccess",$data);
+  }
+
+  public function productStockPage(){
+    $product_code = $_GET["product_code"];
+    $data["product_code"] = $product_code;
+    $result = $this->productStockGET($product_code);
+    $data["stock"]  = $result->stock ;
+
+
+    $this->load->view("ProductStock",$data);
+  }
+
+  public function productVariationPage(){
+    $product_code = $_GET["product_code"];
+    $data["product_code"] = $product_code;
+    $data["variation"] = $this->productVariationGet($product_code);
+
+    $this->load->view("ProductVariation",$data);
+  }
   public function productRegister(){
+
+    $data["product_code"] = $_POST["product_code"];
+    $data["product_name"] = $_POST["product_name"];
+
     $product_code = $_POST["product_code"];
     $array["product_code"] = $product_code;
     $array["product_name"] = $_POST["product_name"];
@@ -84,12 +113,13 @@ class ProductRegisterController extends CI_Controller{
 
 
     //sub image がある場合
-
-    $image_name = $_POST["image_name"];
-    $main_image = $_POST["main_image"];
-
+    if(isset($_POST["image_name"])){
+      $image_name = $_POST["image_name"];
+      $main_image = $_POST["main_image"];
+      $this->productMainImageSet($product_code, $image_name, $main_image);
+    }
     // echo print_r($image_name);
-    $this->productMainImageSet($product_code, $image_name, $main_image);
+
 
 
 
@@ -98,6 +128,7 @@ class ProductRegisterController extends CI_Controller{
     $array["main_description"] = $_POST["description"];
     $array["sub_description1"] = $_POST["description1"];
     $array["sub_description2"] = $_POST["description2"];
+    $array["sales_copy"] = $_POST["innerCatchCopy"] ;
 
     $this->ProductDescriptionSet($product_code, $array);
 
@@ -133,7 +164,7 @@ class ProductRegisterController extends CI_Controller{
     $this->ProductSEOSet($product_code,$array);
 
 
-    redirect('/productList');
+    redirect("/productRegisterSuccess/$product_code");
   }
 
   public function productAdd($array){
@@ -145,7 +176,6 @@ class ProductRegisterController extends CI_Controller{
     );
     $this->PUT($url, $data);
   }
-
   public function productBasicInfo($array){
     $product_code = $array["product_code"];
     $url = "https://management.api.shopserve.jp/v2/items/$product_code/basic";
@@ -163,7 +193,6 @@ class ProductRegisterController extends CI_Controller{
     $this->PUT($url, $data);
 
   }
-
   public function productCategoryUpdate($product_code,$multiCategory){
 
     $url = "https://management.api.shopserve.jp/v2/items/$product_code/categories";
@@ -333,6 +362,124 @@ class ProductRegisterController extends CI_Controller{
     $this->load->view("imageSelect", $data);
   }
 
+
+  public function productStockGET($product_code){
+    $url = "https://management.api.shopserve.jp/v2/items/$product_code/stock";
+    $result = $this->GET($url);
+
+
+    return $result;
+
+  }
+  public function productStockSet(){
+    $product_code = $_POST["product_code"];
+    $url = "https://management.api.shopserve.jp/v2/items/$product_code/stock";
+
+    $type = $_POST["type"];
+
+    if($type == "Item"){
+      if($_POST["quantity"] == "z" || $_POST["quantity"] == "Z"){
+        $data["unlimited"] = "Yes" ;
+      }else{
+        $data["unlimited"] = "No" ;
+        $data["quantity"] = $_POST["quantity"];
+        $data["alert_threshold"] = $_POST["alert_threshold"];
+      }
+      $this->PUT($url,$data);
+    }else{
+      $variation1 = $_POST["variation1"];
+      $variation2 = "";
+      $variation3 = "";
+      $quantity = $_POST["quantity"];
+      $alert_threshold= $_POST["alert_threshold"];
+
+      if(isset($_POST["variation2"])){
+        $variation2 = $_POST["variation2"];
+      }
+      if(isset($_POST["variation3"])){
+        $variation3 = $_POST["variation3"];
+      }
+
+      for($i=0 ; $i<count($variation1); $i++){
+        $data = array();
+        $data["variation_name1"] = $variation1[$i];
+        if($variation2 != ""){
+          $data["variation_name2"] = $variation2[$i];
+        }
+        if($variation3 != ""){
+          $data["variation_name3"] = $variation3[$i];
+        }
+
+        if($quantity[$i] == "z" || $quantity[$i] == "Z"){
+          $data["unlimited"] = "Yes" ;
+        }else{
+          $data["unlimited"] = "No" ;
+          $data["quantity"] = $quantity[$i];
+          $data["alert_threshold"] =$alert_threshold[$i];
+        }
+        $this->PUT($url,$data);
+      }
+
+    }
+
+
+
+
+  }
+  public function productVariationGet($product_code){
+
+    $url = "https://management.api.shopserve.jp/v2/items/$product_code/variation";
+
+    // $type = $type->stock ;
+
+    $type = $this->productStockGET($product_code);
+
+    $type = $type->stock;
+    if($type->management_type == "Item"){
+      $result = "";
+    }else{
+
+      $result = $this->GET($url);
+      $result = $result->variation ;
+    }
+
+    return $result;
+  }
+  public function productVariationSet(){
+    $product_code = $_POST["product_code"];
+    $url = "https://management.api.shopserve.jp/v2/items/$product_code/variation";
+
+
+    if(isset($_POST["title1"])){
+      $data["title1"] = $_POST["title1"] ;
+      $data["choices1"] = $_POST["one"];
+    }
+
+    if($_POST["title2"] != ""){
+      $data["title2"] = $_POST["title2"] ;
+      $data["choices2"] = $_POST["two"];
+    }
+
+
+    if($_POST["title3"] != ""){
+      $data["title3"] = $_POST["title3"] ;
+      $data["choices3"] = $_POST["three"];
+    }
+
+    $this->PUT($url,$data);
+    $this->productVariationType($product_code);
+
+  }
+
+
+  public function productVariationType($product_code){
+    $url = "https://management.api.shopserve.jp/v2/items/$product_code/variation/stock-management";
+    $data = array(
+      "type" => "Variation"
+    );
+    $this->PUT($url,$data);
+  }
+
   public function GET($url){
 
     $curl = curl_init(); // RESET
@@ -393,3 +540,4 @@ class ProductRegisterController extends CI_Controller{
 }
 
 ?>
+

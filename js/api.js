@@ -475,3 +475,89 @@ function ProductImageSelectWindowClose(code,role){
   }
   window.close();
 }
+
+
+// ------------------------product register suceess page ------------------------
+
+function NewProductRegisterMove(){
+  location.href="/api/productList";
+}
+
+function ProductListPageMove(){
+  location.href="/api/productRegisterPage";
+}
+
+function ProductStockSetWindow(code){
+  window.open("/api/productStockPage?product_code="+code, "stock", "width=700, height=800, status=1");
+}
+
+function ProductVariationWindow(code){
+  window.open("/api/productVariationPage?product_code="+code, "variation", "width=1000, height=800, status=1");
+}
+
+
+
+function variationOptionAdd(curr,selectPosition){
+  curr = curr.previousElementSibling;
+  var value = curr.value;
+  var optionCheck = variationOptionCheck1(value,selectPosition);
+  var check = false ;
+  if(optionCheck == false){
+    alert("入力した選択肢は既に登録されています。");
+  }else if(value == ""){
+    alert("文字を入力してください。");
+  }else if(value != ""){
+    check = variationOptionCheck2(value);
+    console.log(check);
+    if(check==false){
+        alert("環境依存文字 or ゛゜ー、。「」& or 余白は使えません。");
+    }else{
+        var select = $(".select"+selectPosition) ;
+        var text = "<option value="+value+">"+value+"</option>";
+        curr.value = "";
+        select.append(text);
+    }
+  }
+
+}
+
+function variationOptionCheck1(text,selectPosition){
+  var check = true;
+  $(".select"+selectPosition+" option").each(function(){
+      if($(this).val() == text){
+        check = false;
+        return false;
+      }
+  });
+
+  return check ;
+}
+
+function variationOptionCheck2(text){
+
+    var check = false;
+    var pattern = /^[゛゜ー、。「」&\s]+$/ ;
+    console.log(text);
+    var unicodeArray = strArray(text);
+    var euc = Encoding.convert(unicodeArray, 'EUCJP', "AUTO");
+    var unicode = Encoding.convert (euc,  'UNICODE' ,  'AUTO' );
+    var unicodeString = Encoding.codeToString(unicode);
+
+    console.log(!pattern.test(text));
+    if(text == unicodeString && !pattern.test(text)){
+      check = true ;
+    }
+    return check ;
+
+}
+
+function strArray(str) {
+    var array = [],i,il=str.length;
+    for(i=0;i<il;i++) array.push(str.charCodeAt(i));
+    return array;
+}
+
+function windowClose(){
+  window.close();
+}
+
